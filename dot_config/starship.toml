@@ -1,0 +1,17 @@
+add_newline = false
+
+[directory]
+truncate_to_repo = false
+read_only = ' 🔒'
+truncation_symbol = '../'
+
+[git_metrics]
+disabled = false
+
+[os]
+format = "[($name )]($style)[$symbol]($style)"
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+Linux = " "
