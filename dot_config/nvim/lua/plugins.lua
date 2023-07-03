@@ -103,6 +103,16 @@ return packer.startup(function(use)
 		"https://github.com/ggandor/leap.nvim"
 	}
 
+	-- nvim-config-local to manage local config files
+	use {
+  "klen/nvim-config-local",
+  config = function()
+    require('config-local').setup {
+      config_files = { ".nvim.lua" },
+    }
+  end
+}
+
 	-- Colorschemes & UI elements
 	use "rebelot/kanagawa.nvim"
 	use 'nvim-lualine/lualine.nvim'
