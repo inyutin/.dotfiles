@@ -38,13 +38,39 @@ keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
 keymap("n", "<S-x>", ":Bdelete<CR>", opts)
 
--- Nvimtree
+-- Nvimtree 
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
--- keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)  Focus?
+keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
+-- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+
+function find_directory_and_focus()
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  local function open_nvim_tree(prompt_bufnr, _)
+    actions.select_default:replace(function()
+      local api = require("nvim-tree.api")
+
+      actions.close(prompt_bufnr)
+      local selection = action_state.get_selected_entry()
+      api.tree.open()
+      api.tree.find_file(selection.cwd .. "/" .. selection.value)
+    end)
+    return true
+  end
+
+  require("telescope.builtin").find_files({
+    find_command = { "fdfind", "--type", "directory", "--hidden", "--exclude", ".git/*" },
+    attach_mappings = open_nvim_tree,
+  })
+end
+
+-- keymap("n", "<leader>fd", find_directory_and_focus, opts)
+vim.keymap.set("n", "fd", find_directory_and_focus)
 
 -- LSP
 keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>",opts)
