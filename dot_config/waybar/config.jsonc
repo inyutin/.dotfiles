@@ -1,0 +1,126 @@
+{
+		"layer": "top",
+
+    "height": 30,
+    "position": "bottom",
+
+		"modules-left": ["wlr/workspaces"],
+		"modules-center": ["hyprland/window"],
+		"modules-right": [
+        "memory",
+				"cpu",
+        "temperature",
+				"pulseaudio", 
+				"backlight", 
+				"battery", 
+				"hyprland/language",
+				"clock"
+		],
+		
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+		"wlr/workspaces": {
+				"format-icons": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4",
+					"5": "5",
+					"6": "6",
+					"7": "7",
+					"8": "8",
+					"9": "9"
+				},
+				"format": "{icon}",
+				"on-click": "activate",
+				"on-scroll-up": "hyprctl dispatch workspace e+1",
+				"on-scroll-down": "hyprctl dispatch workspace e-1"
+		},
+
+		"hyprland/window": {
+				"max-length": 200,
+				"separate-outputs": true
+		},
+
+    "memory": {
+        "interval": 10,
+        "format": "󰍛 {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip": true
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": "󰘚 {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip": true
+    },
+
+    "temperature": {
+        "critical-threshold": 90,
+        "interval": 5,
+        "format": "{icon} {temperatureC}°C",
+        "tooltip-format": "{temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "tooltip": true
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%{format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "",
+        "format-source-muted": " 󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "headset": "󰋎",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "tooltip-format": "{icon}  {volume}% {format_source}",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%-"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
+    },
+
+    "battery": {
+        "interval": 30,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-charging": "󰂄{capacity}%",
+        "format": "{icon}{capacity}%",
+        "format-icons": ["󱃍", "󰁺", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip": true
+    },
+
+    "hyprland/language": {
+        "format": " {}",
+				"format-en": "en",
+				"format-ru": "ru",
+        "min-length": 5,
+        "tooltip": false
+    },
+
+    "clock": {
+        "interval": 60,
+        "format": "{:%H:%M:%S}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>"
+    }
+}

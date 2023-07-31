@@ -1,0 +1,46 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: Fira Code;
+  font-size: 16px;
+  box-shadow: none;
+  text-shadow: none;
+  transition-duration: 0s;
+}
+
+window {
+  color: #c5c9c5;
+  background: #181616;
+} 
+
+#workspaces {
+  margin: 0 6px;
+}
+
+#workspaces button {
+  padding: 0px 4px 0px 4px;
+}
+
+#workspaces button.active {
+  background-color: #c4746e;
+}
+
+#clock {
+  padding: 0px 0px 0px 3px;
+  margin: 0px 0px 0px 3px;
+}
+
+#backlight {
+  padding: 0px 0px 0px 6px;
+  margin: 0px 0px 0px 6px;
+}
+
+#battery {
+  padding: 0px 3px 0px 6px;
+  margin: 0px 3px 0px 6px;
+}
+
+#memory, #cpu, #temperature {
+  padding: 0px 6px 0px 0px;
+  margin: 0px 6px 0px 0px;
+}
