@@ -21,8 +21,13 @@ window {
   padding: 0px 4px 0px 4px;
 }
 
-#workspaces button.active {
+#workspaces button.urgent {
   background-color: #c4746e;
+}
+
+#workspaces button.active {
+	color: #0d0c0c;
+  background-color: #8ba4b0;
 }
 
 #clock {
