@@ -4,14 +4,6 @@ if not status_ok then
     return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-		vim.notify("Can't find NvimTree config!", vim.log.levels.ERROR)	
-    return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
   local function opts(desc)
@@ -115,9 +107,9 @@ nvim_tree.setup {
 				width = {},
         hide_root_folder = false,
         side = "left",
-        mappings = {
-            custom_only = false,
-        },
+        --mappings = {
+        --    custom_only = false,
+        --},
         number = true,
         relativenumber = true,
     },

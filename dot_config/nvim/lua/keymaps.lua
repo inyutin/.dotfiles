@@ -75,12 +75,6 @@ vim.keymap.set("n", "fd", find_directory_and_focus)
 -- LSP
 keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>",opts)
 
--- ChatGPT
-keymap("n", "<leader>cg", "<cmd>ChatGPT<cr>", opts)
-
--- NVterm
--- keymap("n", "<leader>t", function() require("nvterm.terminal").toggle "float" end, opts)
-
 -- INSERT MODE --
 keymap("i", "<C-s>", ":update<cr>", opts)
 

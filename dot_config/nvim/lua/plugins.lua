@@ -69,6 +69,15 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  use {
+		"LhKipp/nvim-nu",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			"jose-elias-alvarez/null-ls.nvim"
+		}
+  }
+
 	-- Gitsigns
   use "lewis6991/gitsigns.nvim"
 
@@ -96,6 +105,11 @@ return packer.startup(function(use)
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+	}
+
+	-- DAP (debugging)
+	use {
+		"mfussenegger/nvim-dap",
 	}
 
 	-- Leap
