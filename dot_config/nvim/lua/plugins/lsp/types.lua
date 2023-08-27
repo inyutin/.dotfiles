@@ -1,4 +1,3 @@
 --- @class LspLanguage
---- @field name string
 --- @field lsp_servers table<string, table>
 --- @field formatting_servers table<string, table>

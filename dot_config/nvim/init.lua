@@ -1,5 +1,5 @@
-require "keymaps"
 require "options"
+require "keymaps"
 
 require "lazy_load"
 
@@ -14,6 +14,3 @@ require "configurations.nvim_tree"
 require "configurations.nvim_treesitter"
 require "configurations.ui"
 require "configurations.dap"
-
--- require "configurations.lsp.lspconfig"
-require "configurations.lsp.keymaps"

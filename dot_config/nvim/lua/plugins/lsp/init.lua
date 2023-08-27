@@ -1,15 +1,28 @@
 local set_key = require('helpers.set_key')
 local languages_all = require('plugins.lsp.languages.all')
 
+-- # TODO: move all cmp related to lsp subfolder
+local cmp_dependencies = {
+	"hrsh7th/nvim-cmp",   -- The completion engine
+	"hrsh7th/cmp-buffer", -- buffer completions
+	"hrsh7th/cmp-path",   -- path completions
+	"hrsh7th/cmp-cmdline", -- cmdline completions
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-nvim-lsp-signature-help",
+}
+
+
 --- @type LazyPluginSpec
 local mason_plugin = {
 	--- TODO: what else Mason can do, what other options are available?
 	"williamboman/mason-lspconfig.nvim",
 	tag = "v1.13.0",
-	opts = {
-		ensure_installed = languages_all.lsp_server_names,
-		automatic_installation = true,
-	},
+	opts = function()
+		return {
+			ensure_installed = languages_all.get_all_lsp_server_names(),
+			automatic_installation = true,
+		}
+	end,
 	lazy = true,
 	dependencies = {
 		{
@@ -20,6 +33,7 @@ local mason_plugin = {
 				package_dir = vim.fn.stdpath("data") .. "/mason",
 			},
 		},
+		cmp_dependencies,
 	}
 }
 
@@ -28,8 +42,15 @@ local lsp_config_plugin = {
 	"neovim/nvim-lspconfig",
 	commit = "f7922e59aeb9bc3e31a660ea4e7405ffa3fc2c3a",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = mason_plugin,
-	opts = { servers = languages_all.lsp_servers },
+	dependencies = {
+		mason_plugin,
+		cmp_dependencies,
+	},
+	opts = function()
+		return {
+			servers = languages_all.get_all_lsp_servers()
+		}
+	end,
 	config = function(_, opts)
 		local servers = opts.servers
 		for server, server_opts in pairs(servers) do
@@ -52,12 +73,14 @@ local lsp_zero_plugin = {
 				async = false,
 				timeout_ms = 10000,
 			},
-			servers = languages_all.formatting_servers,
+			servers = languages_all.get_all_formatting_servers(),
 		})
 
 		lsp_zero.on_attach(function(_, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr })
 		end)
+
+		--- TODO: telescope integration
 
 		set_key("n", "<leader>F", ":LspZeroFormat<cr>")
 
