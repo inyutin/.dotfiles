@@ -1,9 +1,12 @@
 require "keymaps"
 require "options"
+
 require "lazy_load"
 
-require "configurations.bufferline"
 require "configurations.cmp"
+
+require "configurations.bufferline"
+
 require "configurations.copilot"
 require "configurations.gitsigns"
 require "configurations.leap"
@@ -12,5 +15,5 @@ require "configurations.nvim_treesitter"
 require "configurations.ui"
 require "configurations.dap"
 
-require "configurations.lsp.lspconfig"
+-- require "configurations.lsp.lspconfig"
 require "configurations.lsp.keymaps"

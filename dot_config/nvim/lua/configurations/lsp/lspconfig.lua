@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "pyright" },
+	ensure_installed = { "pyright" },
 }
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
@@ -11,7 +11,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require("lspconfig").pyright.setup {
 	capabilities = capabilities,
 	filetypes = { "python" },
-	pyright = {autoImportCompletion = true,},
+	pyright = { autoImportCompletion = true, },
 	python = {
 		analysis = {
 			autoSearchPaths = true,

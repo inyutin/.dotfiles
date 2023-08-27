@@ -4,25 +4,25 @@ require('dap-python').test_runner = 'pytest'
 
 require('dap').configurations.python = {
 	{
-    name= "Pytest: Current File",
-    type= "python",
-    request= "launch",
-    module= "pytest",
-    args= {
-        "${file}",
-        "-sv",
-        "--log-cli-level=INFO",
-        "--log-file=test_out.log"
-    },
-    -- console= "integratedTerminal",
-    -- console= "externalTerminal",
-		console= "internalConsole",
-  }
+		name = "Pytest: Current File",
+		type = "python",
+		request = "launch",
+		module = "pytest",
+		args = {
+			"${file}",
+			"-sv",
+			"--log-cli-level=INFO",
+			"--log-file=test_out.log"
+		},
+		-- console= "integratedTerminal",
+		-- console= "externalTerminal",
+		console = "internalConsole",
+	}
 }
 
 require('dap').defaults.fallback.external_terminal = {
-	command = '/usr/bin/alacritty';
-	args = {'-e'};
+	command = '/usr/bin/alacritty',
+	args = { '-e' },
 }
 
 local opts = { noremap = true, silent = true }
@@ -37,10 +37,10 @@ vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() e
 -- vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
 	require('dap.ui.widgets').hover()
 end)
-vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
 	require('dap.ui.widgets').preview()
 end)
 vim.keymap.set('n', '<Leader>df', function()
@@ -54,53 +54,53 @@ end)
 
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup({
-  icons = { expanded = "▾", collapsed = "▸" },
-  mappings = {
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
-  expand_lines = vim.fn.has("nvim-0.7"),
-  layouts = {
-    {
-      elements = {
-        "scopes",
-      },
-      size = 0.3,
-      position = "right"
-    },
-    {
-      elements = {
-        "repl",
-        "breakpoints"
-      },
-      size = 0.3,
-      position = "bottom",
-    },
-  },
-  floating = {
-    max_height = nil,
-    max_width = nil,
-    border = "single",
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
-  windows = { indent = 1 },
-  render = {
-    max_type_length = nil,
-  },
+	icons = { expanded = "▾", collapsed = "▸" },
+	mappings = {
+		open = "o",
+		remove = "d",
+		edit = "e",
+		repl = "r",
+		toggle = "t",
+	},
+	expand_lines = vim.fn.has("nvim-0.7"),
+	layouts = {
+		{
+			elements = {
+				"scopes",
+			},
+			size = 0.3,
+			position = "right"
+		},
+		{
+			elements = {
+				"repl",
+				"breakpoints"
+			},
+			size = 0.3,
+			position = "bottom",
+		},
+	},
+	floating = {
+		max_height = nil,
+		max_width = nil,
+		border = "single",
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
+	},
+	windows = { indent = 1 },
+	render = {
+		max_type_length = nil,
+	},
 })
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+	dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
 end
 
 vim.keymap.set('n', '<Leader>de', function()
