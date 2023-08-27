@@ -1,3 +1,5 @@
+-- TODO: add other options
+-- TODO: lua formats with huge indents (?), fix it
 local lua_lsp_settings = {
 	settings = {
 		Lua = {
