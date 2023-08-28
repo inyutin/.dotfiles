@@ -19,12 +19,6 @@ return {
 		},
 	},
 
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-	},
-
 	--{ TODO:
 	--	"LhKipp/nvim-nu",
 	--	requires = {
