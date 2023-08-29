@@ -30,6 +30,8 @@ local treesitter_plugin = {
 	end,
 }
 
+-- TODO: how to load this lazily?
+--- @type LazyPluginSpec
 local treesitter_context_plugin = {
 	"nvim-treesitter/nvim-treesitter-context",
 	commit = "3e7c60982c98a9f5e7b6b0fb7c9ba5318f752fe1",
@@ -39,7 +41,7 @@ local treesitter_context_plugin = {
 	config = function(_, _)
 		local ts_context = require("treesitter-context")
 		ts_context.setup {
-			enable = true,
+			enable = false,
 			max_lines = 0,
 			min_window_height = 0,
 			line_numbers = true,
