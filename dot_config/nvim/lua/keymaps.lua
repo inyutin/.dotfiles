@@ -45,6 +45,7 @@ keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 
 local function find_directory_and_focus()
