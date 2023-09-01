@@ -13,7 +13,16 @@ require('kanagawa').setup({
 	globalStatus = false,   -- adjust window separators highlight for laststatus=3
 	terminalColors = true,  -- define vim.g.terminal_color_{0,17}
 	colors = {},
-	theme = "default"       -- Load "default" theme or the experimental "light" theme
+	overrides = function(colors)
+		local theme = colors.theme
+		local illuminate_color_setup = { fg = theme.syn.special2, bg = theme.ui.bg_p1, bold = true }
+		return {
+			IlluminatedWordText = illuminate_color_setup,
+			IlluminatedWordRead = illuminate_color_setup,
+			IlluminatedWordWrite = illuminate_color_setup,
+		}
+	end,
+	theme = "default" -- Load "default" theme or the experimental "light" theme
 })
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme kanagawa-dragon")
