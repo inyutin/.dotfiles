@@ -1,10 +1,8 @@
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+vim.keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -18,35 +16,35 @@ vim.g.maplocalleader = " "
 
 -- NORMAL MODE --
 -- Enter visual block mode; # TODO: find a better command
-keymap("n", "<A-v>", "<C-v>", opts)
-keymap("n", "<C-s>", ":update<cr>", opts)
+vim.keymap.set("n", "<A-v>", "<C-v>", opts)
+vim.keymap.set("n", "<C-s>", ":update<cr>", opts)
 
 -- Better window navigation
-keymap("n", "<C-Left>", "<C-w>h", opts)
-keymap("n", "<C-Down>", "<C-w>j", opts)
-keymap("n", "<C-Up>", "<C-w>k", opts)
-keymap("n", "<C-Right>", "<C-w>l", opts)
+vim.keymap.set("n", "<C-Left>", "<C-w>h", opts)
+vim.keymap.set("n", "<C-Down>", "<C-w>j", opts)
+vim.keymap.set("n", "<C-Up>", "<C-w>k", opts)
+vim.keymap.set("n", "<C-Right>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-S-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-S-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<Tab>", ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<S-x>", ":Bdelete<CR>", opts)
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<S-x>", ":Bdelete<CR>", opts)
 
 -- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 
 local function find_directory_and_focus()
 	local actions = require("telescope.actions")
@@ -70,26 +68,26 @@ local function find_directory_and_focus()
 	})
 end
 
--- keymap("n", "<leader>fd", find_directory_and_focus, opts)
+-- vim.keymap.set("n", "<leader>fd", find_directory_and_focus, opts)
 vim.keymap.set("n", "fd", find_directory_and_focus)
 
 -- LSP
-keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+vim.keymap.set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 -- INSERT MODE --
-keymap("i", "<C-s>", ":update<cr>", opts)
+vim.keymap.set("i", "<C-s>", ":update<cr>", opts)
 
 -- VISUAL MODE --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-Up>", ":m .+1<CR>==", opts)
-keymap("v", "<A-Down>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
+vim.keymap.set("v", "<A-Up>", ":m .+1<CR>==", opts)
+vim.keymap.set("v", "<A-Down>", ":m .-2<CR>==", opts)
+vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "<A-Up>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-Down>", ":move '<-2<CR>gv-gv", opts)
+vim.keymap.set("x", "<A-Up>", ":move '>+1<CR>gv-gv", opts)
+vim.keymap.set("x", "<A-Down>", ":move '<-2<CR>gv-gv", opts)

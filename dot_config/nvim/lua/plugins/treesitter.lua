@@ -1,5 +1,3 @@
-local set_key = require('helpers.set_key')
-
 local ensure_installed = {
 	"python",
 	"dockerfile",
@@ -38,22 +36,22 @@ local treesitter_context_plugin = {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
-	config = function(_, _)
+	opts = {
+		enable = false,
+		max_lines = 0,
+		min_window_height = 0,
+		line_numbers = true,
+		multiline_threshold = 20,
+		trim_scope = 'outer',
+		mode = 'cursor',
+		separator = nil,
+		zindex = 20,
+		on_attach = nil,
+	},
+	config = function(_, opts)
 		local ts_context = require("treesitter-context")
-		ts_context.setup {
-			enable = false,
-			max_lines = 0,
-			min_window_height = 0,
-			line_numbers = true,
-			multiline_threshold = 20,
-			trim_scope = 'outer',
-			mode = 'cursor',
-			separator = nil,
-			zindex = 20,  -- The Z-index of the context window
-			on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-		}
-
-		set_key("n", "<leader>C", ":TSContextToggle<cr>")
+		ts_context.setup(opts)
+		vim.keymap.set("n", "<leader>C", ":TSContextToggle<cr>")
 	end,
 }
 

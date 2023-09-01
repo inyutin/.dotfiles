@@ -20,20 +20,18 @@ local comment_plugin = {
 			eol = 'gcA',
 		},
 		mappings = {
-			---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
 			basic = true,
-			---Extra mapping; `gco`, `gcO`, `gcA`
 			extra = true,
 		},
 	},
 	lazy = true,
 	keys = {
-		{ "gc", mode = "v" },
-		{ "gb", mode = "v" },
 		'gc',
 		'gb',
 		'gcc',
 		'gcb',
+		{ "gc", mode = "v", id = "gc" },
+		{ "gb", mode = "v", id = "gb" },
 	},
 }
 

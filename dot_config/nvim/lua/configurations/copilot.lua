@@ -9,7 +9,7 @@ vim.g.copilot_filetypes = { xml = false }
 vim.g.copilot_no_tab_map = true
 -- vim.keymap.set("n", "<A-a>", ":Copilot#Accept('\\<CR>')<CR>", { silent = true })
 -- vim.keymap.set("i", "<A-a>", ":copilot#Accept('\\<CR>')<CR>", { silent = true })
-vim.api.nvim_set_keymap('i', '<A-a>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
+vim.keymap.set('i', '<A-a>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
 
 -- <C-]>                   Dismiss the current suggestion.
 -- <Plug>(copilot-dismiss)

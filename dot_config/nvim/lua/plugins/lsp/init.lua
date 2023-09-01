@@ -1,4 +1,3 @@
-local set_key = require('helpers.set_key')
 local languages_all = require('plugins.lsp.languages.all')
 
 -- # TODO: move all cmp related to lsp subfolder
@@ -82,7 +81,7 @@ local lsp_zero_plugin = {
 
 		--- TODO: telescope integration
 
-		set_key("n", "<leader>F", ":LspZeroFormat<cr>")
+		vim.keymap.set("n", "<leader>F", ":LspZeroFormat<cr>")
 
 		lsp_zero.setup()
 	end,
