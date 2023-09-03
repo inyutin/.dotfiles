@@ -61,8 +61,6 @@ return {
 	},
 
 	-- Colorschemes & UI elements
-	"rebelot/kanagawa.nvim",
-	'nvim-lualine/lualine.nvim',
 	{
 		'akinsho/bufferline.nvim',
 		version = "v3.*",
