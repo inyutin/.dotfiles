@@ -5,9 +5,8 @@ local kanagawa_colorscheme_plugin = {
 	dependencies = {
 		"RRethy/vim-illuminate",
 	},
-	build = ":KanagawaCompile",
 	opts = {
-		compile = true,
+		-- compile = true,  TODO
 		undercurl = true,
 		commentStyle = { italic = true },
 		functionStyle = {},

@@ -5,10 +5,8 @@ require "lazy_load"
 
 require "configurations.cmp"
 
-require "configurations.bufferline"
-
 require "configurations.copilot"
 require "configurations.gitsigns"
 require "configurations.leap"
 require "configurations.nvim_tree"
-require "configurations.dap"
+-- require "configurations.dap"  TODO
