@@ -19,6 +19,9 @@ local illuminate_plugin = {
 		vim.keymap.set("n", "<C-p>", function()
 			require("illuminate").goto_prev_reference()
 		end)
+		vim.keymap.set("n", "gi", function()
+			require('illuminate').toggle_freeze_buf()
+		end)
 	end,
 }
 return illuminate_plugin
