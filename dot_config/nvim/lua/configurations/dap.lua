@@ -25,6 +25,9 @@ require('dap').defaults.fallback.external_terminal = {
 	args = { '-e' },
 }
 
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
 vim.keymap.set('n', '<Leader>1', function() require('dap').continue() end)
 vim.keymap.set('n', '<Leader>2', function() require('dap').step_over() end)
 vim.keymap.set('n', '<Leader>3', function() require('dap').step_into() end)
