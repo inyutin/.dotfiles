@@ -2,6 +2,16 @@
 local comment_plugin = {
 	'numToStr/Comment.nvim',
 	tag = 'v0.8.0',
+	lazy = true,
+	event = "VeryLazy",
+	keys = {
+		'gc',
+		'gb',
+		'gcc',
+		'gcb',
+		{ "gc", mode = "v", id = "gc" },
+		{ "gb", mode = "v", id = "gb" },
+	},
 	opts = {
 		padding = true,
 		sticky = true,
@@ -23,15 +33,6 @@ local comment_plugin = {
 			basic = true,
 			extra = true,
 		},
-	},
-	lazy = true,
-	keys = {
-		'gc',
-		'gb',
-		'gcc',
-		'gcb',
-		{ "gc", mode = "v", id = "gc" },
-		{ "gb", mode = "v", id = "gb" },
 	},
 }
 
