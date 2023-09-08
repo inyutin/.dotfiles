@@ -1,7 +1,7 @@
 --- @type LazyPluginSpec
 local bufferline_plugin = {
 	'akinsho/bufferline.nvim',
-	tag = "v0.4.3",
+	tag = "v4.3.0",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
