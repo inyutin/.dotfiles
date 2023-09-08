@@ -47,9 +47,6 @@ return {
 
 	{ "rcarriga/nvim-dap-ui",   dependencies = { "mfussenegger/nvim-dap" } },
 
-	-- Leap
-	"https://github.com/ggandor/leap.nvim",
-
 	-- nvim-config-local to manage local config files
 	{
 		"klen/nvim-config-local",
