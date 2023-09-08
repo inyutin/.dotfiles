@@ -41,12 +41,6 @@ return {
 		}
 	},
 
-	-- DAP (debugging)	
-	"mfussenegger/nvim-dap",
-	'mfussenegger/nvim-dap-python',
-
-	{ "rcarriga/nvim-dap-ui",   dependencies = { "mfussenegger/nvim-dap" } },
-
 	-- nvim-config-local to manage local config files
 	{
 		"klen/nvim-config-local",
