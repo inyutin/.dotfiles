@@ -1,15 +1,4 @@
---- @type LazyPluginSpec
-local gitblame_plugin = {
-	"f-person/git-blame.nvim",
-	commit = "41e22dc843c6821a410db57be0b7025154f9d8ec",
-	config = function(_, _)
-		vim.g.gitblame_display_virtual_text = 0
-	end,
-}
-
-
 local function get_lualine_opts()
-	local git_blame = require('gitblame')
 	return {
 		options = {
 			icons_enabled = true,
@@ -44,9 +33,7 @@ local function get_lualine_opts()
 					},
 				},
 			},
-			lualine_x = {
-				{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
-			},
+			lualine_x = {},
 			lualine_y = { 'filetype' },
 			lualine_z = { 'location' }
 		},
@@ -72,7 +59,6 @@ local lualine_plugin = {
 	commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		gitblame_plugin,
 	},
 	opts = get_lualine_opts,
 }

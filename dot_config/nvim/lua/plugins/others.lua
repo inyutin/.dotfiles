@@ -19,17 +19,6 @@ return {
 		},
 	},
 
-	--{ TODO:
-	--	"LhKipp/nvim-nu",
-	--	requires = {
-	--		"nvim-treesitter/nvim-treesitter",
-	--		"jose-elias-alvarez/null-ls.nvim"
-	--	}
-	-- },
-
-	-- Gitsigns
-	{ "lewis6991/gitsigns.nvim" },
-
 	-- Copilot
 	"github/copilot.vim",
 
