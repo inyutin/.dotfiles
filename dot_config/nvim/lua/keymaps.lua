@@ -34,9 +34,6 @@ vim.keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 -- Buffers
 vim.keymap.set("n", "<S-x>", ":Bdelete<CR>", opts)
 
--- Nvimtree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
