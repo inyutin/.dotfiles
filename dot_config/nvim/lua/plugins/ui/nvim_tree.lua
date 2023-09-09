@@ -1,9 +1,3 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-	vim.notify("NvimTree is not installed!", vim.log.levels.ERROR)
-	return
-end
-
 local function on_attach(bufnr)
 	local api = require('nvim-tree.api')
 	local function opts(desc)
@@ -73,7 +67,7 @@ local function on_attach(bufnr)
 	vim.keymap.set('n', 'h', api.node.open.horizontal, opts('Open: Horizontal Split'))
 end
 
-nvim_tree.setup {
+local nvim_tree_opts = {
 	on_attach = on_attach,
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -107,9 +101,6 @@ nvim_tree.setup {
 		width = {},
 		hide_root_folder = false,
 		side = "left",
-		--mappings = {
-		--    custom_only = false,
-		--},
 		number = true,
 		relativenumber = true,
 	},
@@ -152,3 +143,15 @@ nvim_tree.setup {
 		}
 	}
 }
+
+
+--- @type LazyPluginSpec
+local nvim_tree_plugin = {
+	'nvim-tree/nvim-tree.lua',
+	commit = "b7f6600bc2b4e48e4af45f1e77d2bf170685a542",
+	dependencies = {
+		'nvim-tree/nvim-web-devicons',
+	},
+	opts = nvim_tree_opts,
+}
+return nvim_tree_plugin

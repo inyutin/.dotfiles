@@ -11,14 +11,6 @@ return {
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 
-	-- nvim-tree
-	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
-		},
-	},
-
 	-- Copilot
 	"github/copilot.vim",
 
