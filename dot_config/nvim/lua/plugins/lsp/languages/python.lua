@@ -2,10 +2,18 @@
 local function get_python_language()
 	local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+	-- TODO: neoconf should be able to work with analysis/python parth params out of the box
 	Neoconf = require("neoconf")
-	local neoconf_defaults = { rootDir = nil }
+	local neoconf_defaults = {
+		rootDir = nil,
+		pythonPath = nil,
+		analysis = {
+			typeCheckingMode = "basic",
+		},
+	}
+	local pyright_settings = Neoconf.get("pyright", neoconf_defaults)
+
 	local function get_root_dir(startpath)
-		local pyright_settings = Neoconf.get("pyright", neoconf_defaults)
 		local root_dir = pyright_settings.rootDir
 		if root_dir ~= nil then
 			return root_dir
@@ -18,6 +26,13 @@ local function get_python_language()
 		end
 	end
 
+	local pyright_python_settings = {
+		analysis = pyright_settings.analysis,
+	}
+	if pyright_settings.pythonPath ~= nil then
+		pyright_python_settings.pythonPath = pyright_settings.pythonPath
+	end
+
 	--- @type LspLanguage
 	local python_language = {
 		lsp_servers = {
@@ -25,7 +40,9 @@ local function get_python_language()
 				root_dir = get_root_dir,
 				capabilities = capabilities,
 				filetypes = { "python" },
-				pyright = { autoImportCompletion = true },
+				settings = {
+					python = pyright_python_settings,
+				},
 			},
 		},
 		formatting_servers = {},
