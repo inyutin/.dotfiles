@@ -12,6 +12,16 @@ local cmp_dependencies = {
 
 
 --- @type LazyPluginSpec
+local neoconf_plugin = {
+	"folke/neoconf.nvim",
+	commit = "4a344462d45a08e81b19aa3d63d2bfe06404eec0",
+	cmd = "Neoconf",
+	lazy = true,
+	opts = {}
+}
+
+
+--- @type LazyPluginSpec
 local mason_plugin = {
 	--- TODO: what else Mason can do, what other options are available?
 	"williamboman/mason-lspconfig.nvim",
@@ -42,6 +52,7 @@ local lsp_config_plugin = {
 	commit = "f7922e59aeb9bc3e31a660ea4e7405ffa3fc2c3a",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		neoconf_plugin,
 		mason_plugin,
 		cmp_dependencies,
 	},
@@ -86,6 +97,7 @@ local lsp_zero_plugin = {
 		lsp_zero.setup()
 	end,
 }
+
 
 --- @type LazyPluginSpec[]
 return {

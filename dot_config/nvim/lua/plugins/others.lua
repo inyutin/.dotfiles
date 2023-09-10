@@ -21,14 +21,4 @@ return {
 			'nvim-lua/plenary.nvim'
 		}
 	},
-
-	-- nvim-config-local to manage local config files
-	{
-		"klen/nvim-config-local",
-		config = function()
-			require('config-local').setup {
-				config_files = { ".nvim.lua" },
-			}
-		end
-	},
 }
