@@ -46,6 +46,31 @@ local mason_plugin = {
 	}
 }
 
+local null_ls_plugin = {
+	"jose-elias-alvarez/null-ls.nvim",
+	config = function(_, _)
+		-- TODO: use more null-ls features
+		local null_ls = require("null-ls")
+		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+		null_ls.setup({
+			sources = languages_all.get_all_null_ls_sources(),
+			on_attach = function(client, bufnr)
+				if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.format({ bufnr = bufnr })
+						end,
+					})
+				end
+			end,
+		})
+	end,
+}
+
 --- @type LazyPluginSpec
 local lsp_config_plugin = {
 	"neovim/nvim-lspconfig",
@@ -55,6 +80,7 @@ local lsp_config_plugin = {
 		neoconf_plugin,
 		mason_plugin,
 		cmp_dependencies,
+		null_ls_plugin,
 	},
 	opts = function()
 		return {
@@ -69,38 +95,7 @@ local lsp_config_plugin = {
 	end,
 }
 
---- @type LazyPluginSpec
-local lsp_zero_plugin = {
-	-- TODO: move to v.3 after 20 September 2023
-	-- TODO: re-use other parts of lsp-zero.nvim
-	"VonHeikemen/lsp-zero.nvim",
-	commit = "f084f4a6a716f55bf9c4026e73027bb24a0325a3",
-	dependencies = { "neovim/nvim-lspconfig", },
-	config = function()
-		local lsp_zero = require('lsp-zero').preset({})
-		lsp_zero.format_on_save({
-			format_opts = {
-				async = false,
-				timeout_ms = 10000,
-			},
-			servers = languages_all.get_all_formatting_servers(),
-		})
-
-		lsp_zero.on_attach(function(_, bufnr)
-			lsp_zero.default_keymaps({ buffer = bufnr })
-		end)
-
-		--- TODO: telescope integration
-
-		vim.keymap.set("n", "<leader>F", ":LspZeroFormat<cr>")
-
-		lsp_zero.setup()
-	end,
-}
-
-
 --- @type LazyPluginSpec[]
 return {
 	lsp_config_plugin,
-	lsp_zero_plugin,
 }

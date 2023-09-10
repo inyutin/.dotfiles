@@ -22,14 +22,14 @@ local function get_all_lsp_servers()
 	return res
 end
 
----@return table<string, table>
-local function get_all_formatting_servers()
-	---@type table<string, table>
+---@return  Array<string>
+local function get_all_null_ls_sources()
+	---@type Array<string>
 	local res = {}
 	for language_count = 1, #languages do
 		local language = languages[language_count]()
-		for k, v in pairs(language.formatting_servers) do
-			res[k] = v
+		for _, v in pairs(language.null_ls_sources) do
+			table.insert(res, v)
 		end
 	end
 	return res
@@ -51,6 +51,6 @@ end
 return {
 	languages = languages,
 	get_all_lsp_servers = get_all_lsp_servers,
-	get_all_formatting_servers = get_all_formatting_servers,
+	get_all_null_ls_sources = get_all_null_ls_sources,
 	get_all_lsp_server_names = get_all_lsp_server_names,
 }

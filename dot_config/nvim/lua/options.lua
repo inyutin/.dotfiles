@@ -47,3 +47,8 @@ opt.writebackup = false       -- if a file is being edited by another program (o
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+
+-- vim.diagnostic.config({
+-- 	virtual_text = false,
+-- 	only_current_line = true,
+-- })

@@ -5,7 +5,7 @@ local function get_typescript_language()
 		lsp_servers = {
 			tsserver = {}
 		},
-		formatting_servers = {},
+		null_ls_sources = {},
 	}
 	return typescript_language
 end

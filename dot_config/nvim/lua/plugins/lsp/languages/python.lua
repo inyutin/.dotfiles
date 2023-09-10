@@ -1,20 +1,13 @@
+local config = require('plugins.lsp.config')
+local shared_on_attach = require('plugins.lsp.languages.shared.on_attach')
+
 --- @return LspLanguage
 local function get_python_language()
 	local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-	-- TODO: neoconf should be able to work with analysis/python parth params out of the box
-	Neoconf = require("neoconf")
-	local neoconf_defaults = {
-		rootDir = nil,
-		pythonPath = nil,
-		analysis = {
-			typeCheckingMode = "basic",
-		},
-	}
-	local pyright_settings = Neoconf.get("pyright", neoconf_defaults)
-
+	local python_settings = config.get_python_settings()
 	local function get_root_dir(startpath)
-		local root_dir = pyright_settings.rootDir
+		local root_dir = python_settings.pyright.rootDir
 		if root_dir ~= nil then
 			return root_dir
 		end
@@ -27,12 +20,26 @@ local function get_python_language()
 	end
 
 	local pyright_python_settings = {
-		analysis = pyright_settings.analysis,
+		analysis = python_settings.pyright.analysis,
 	}
-	if pyright_settings.pythonPath ~= nil then
-		pyright_python_settings.pythonPath = pyright_settings.pythonPath
+	if python_settings.pyright.pythonPath ~= nil then
+		pyright_python_settings.pythonPath = python_settings.pyright.pythonPath
 	end
 
+	local black_extra_args = {}
+	if python_settings.black.config_path ~= nil then
+		table.insert(black_extra_args, "--config")
+		table.insert(black_extra_args, python_settings.black.config_path)
+	end
+
+	local ruff_extra_args = {}
+	if python_settings.ruff.config_path ~= nil then
+		table.insert(ruff_extra_args, "--config")
+		table.insert(ruff_extra_args, python_settings.ruff.config_path)
+	end
+
+	local null_ls = require("null-ls")
+	-- TODO: set up ruff_lsp
 	--- @type LspLanguage
 	local python_language = {
 		lsp_servers = {
@@ -43,9 +50,19 @@ local function get_python_language()
 				settings = {
 					python = pyright_python_settings,
 				},
+				on_attach = shared_on_attach,
 			},
 		},
-		formatting_servers = {},
+		null_ls_sources = {
+			-- formatting
+			null_ls.builtins.formatting.black.with({
+				extra_args = black_extra_args,
+			}),
+			-- -- diagnostics
+			null_ls.builtins.diagnostics.ruff.with({
+				extra_args = ruff_extra_args,
+			})
+		},
 	}
 	return python_language
 end

@@ -1,8 +1,12 @@
+local shared_on_attach = require('plugins.lsp.languages.shared.on_attach')
+
 --- @return LspLanguage
 local function get_lua_language()
 	-- TODO: add other options
 	-- TODO: lua formats with huge indents (?), fix it
+	local null_ls = require("null-ls")
 	local lua_lsp_settings = {
+		on_attach = shared_on_attach,
 		settings = {
 			Lua = {
 				workspace = {
@@ -39,8 +43,8 @@ local function get_lua_language()
 		lsp_servers = {
 			lua_ls = lua_lsp_settings,
 		},
-		formatting_servers = {
-			['lua_ls'] = { 'lua' },
+		null_ls_sources = {
+			null_ls.builtins.formatting.lua_format,
 		},
 	}
 	return lua_language
