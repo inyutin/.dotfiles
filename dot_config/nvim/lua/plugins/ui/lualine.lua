@@ -57,9 +57,6 @@ end
 local lualine_plugin = {
 	'nvim-lualine/lualine.nvim',
 	commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
 	opts = get_lualine_opts,
 }
 return lualine_plugin

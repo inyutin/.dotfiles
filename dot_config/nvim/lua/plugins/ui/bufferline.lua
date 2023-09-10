@@ -2,9 +2,6 @@
 local bufferline_plugin = {
 	'akinsho/bufferline.nvim',
 	tag = "v4.3.0",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
 	opts = {
 		options = {
 			themable = true,

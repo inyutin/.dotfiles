@@ -1,7 +1,5 @@
 return {
-	{ "nvim-lua/popup.nvim" },  -- An implementation of the Popup API from vim in Neovim
-	{ "nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
-	{ "moll/vim-bbye" },        -- Close buffers without closing the window
+	{ "moll/vim-bbye" }, -- Close buffers without closing the window
 
 	-- CMP	
 	{ "hrsh7th/nvim-cmp" },   -- The completion engine
@@ -17,8 +15,5 @@ return {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			'nvim-lua/plenary.nvim'
-		}
 	},
 }
