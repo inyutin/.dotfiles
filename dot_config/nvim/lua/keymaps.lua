@@ -31,41 +31,6 @@ vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
--- Buffers
-vim.keymap.set("n", "<S-x>", ":Bdelete<CR>", opts)
-
-
--- Telescope
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-
-local function find_directory_and_focus()
-	local actions = require("telescope.actions")
-	local action_state = require("telescope.actions.state")
-
-	local function open_nvim_tree(prompt_bufnr, _)
-		actions.select_default:replace(function()
-			local api = require("nvim-tree.api")
-
-			actions.close(prompt_bufnr)
-			local selection = action_state.get_selected_entry()
-			api.tree.open()
-			api.tree.find_file(selection.cwd .. "/" .. selection.value)
-		end)
-		return true
-	end
-
-	require("telescope.builtin").find_files({
-		find_command = { "fdfind", "--type", "directory", "--hidden", "--exclude", ".git/*" },
-		attach_mappings = open_nvim_tree,
-	})
-end
-
--- vim.keymap.set("n", "<leader>fd", find_directory_and_focus, opts)
-vim.keymap.set("n", "fd", find_directory_and_focus)
-
 -- LSP
 vim.keymap.set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
@@ -86,3 +51,5 @@ vim.keymap.set("v", "p", '"_dP', opts)
 -- Move text up and down
 vim.keymap.set("x", "<A-Up>", ":move '>+1<CR>gv-gv", opts)
 vim.keymap.set("x", "<A-Down>", ":move '<-2<CR>gv-gv", opts)
+
+vim.keymap.set('n', 'do', vim.diagnostic.open_float, opts)
