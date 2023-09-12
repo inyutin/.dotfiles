@@ -2,11 +2,8 @@
 local kanagawa_colorscheme_plugin = {
 	"rebelot/kanagawa.nvim",
 	commit = "0a24e504a3a278849ad0aef31cd6dd24c73ca3db",
-	dependencies = {
-		"RRethy/vim-illuminate",
-	},
 	opts = {
-		-- compile = true,  TODO
+		compile = false,
 		undercurl = true,
 		commentStyle = { italic = true },
 		functionStyle = {},
@@ -32,6 +29,7 @@ local kanagawa_colorscheme_plugin = {
 			}
 		end,
 	},
+	priority = 500, -- load after all other plugins, this is recommended
 	config = function(_, opts)
 		require("kanagawa").setup(opts)
 		require("kanagawa").load("dragon")
