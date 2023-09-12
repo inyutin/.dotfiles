@@ -1,3 +1,4 @@
+local bbye_plugin = require("plugins.ui.bbye")
 local bufferline_plugin = require("plugins.ui.bufferline")
 local gitsigns_plugin = require("plugins.ui.gitsigns")
 local harpoon_plugin = require("plugins.ui.harpoon")
@@ -7,6 +8,7 @@ local nvim_tree_plugin = require("plugins.ui.nvim_tree")
 
 --- @type LazyPluginSpec[]
 return {
+	bbye_plugin,
 	bufferline_plugin,
 	gitsigns_plugin,
 	harpoon_plugin,
