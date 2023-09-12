@@ -7,7 +7,6 @@ local opt = vim.opt
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-opt.shell = "/usr/bin/fish"   -- set shell to fish
 opt.backup = false            -- creates a backup file
 opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 opt.cmdheight = 0             -- more space in the neovim command line for displaying messages
@@ -52,11 +51,6 @@ opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 -- https://unix.stackexchange.com/a/383044
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = { "*" },
 })
-
--- vim.diagnostic.config({
--- 	virtual_text = false,
--- 	only_current_line = true,
--- })

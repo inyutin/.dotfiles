@@ -1,4 +1,2 @@
-require "options"
-require "keymaps"
-
+require "core"
 require "lazy_load"
