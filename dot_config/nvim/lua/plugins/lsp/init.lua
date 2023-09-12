@@ -1,14 +1,5 @@
 local languages_all = require('plugins.lsp.languages.all')
-
--- # TODO: move all cmp related to lsp subfolder
-local cmp_dependencies = {
-	"hrsh7th/nvim-cmp",   -- The completion engine
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path",   -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-nvim-lsp-signature-help",
-}
+local cmp_plugin = require('plugins.lsp.cmp')
 
 
 --- @type LazyPluginSpec
@@ -42,7 +33,6 @@ local mason_plugin = {
 				package_dir = vim.fn.stdpath("data") .. "/mason",
 			},
 		},
-		cmp_dependencies,
 	}
 }
 
@@ -79,7 +69,7 @@ local lsp_config_plugin = {
 	dependencies = {
 		neoconf_plugin,
 		mason_plugin,
-		cmp_dependencies,
+		cmp_plugin,
 		null_ls_plugin,
 	},
 	opts = function()
@@ -98,4 +88,5 @@ local lsp_config_plugin = {
 --- @type LazyPluginSpec[]
 return {
 	lsp_config_plugin,
+	cmp_plugin,
 }
