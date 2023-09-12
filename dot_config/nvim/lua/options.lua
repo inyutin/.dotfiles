@@ -48,6 +48,14 @@ opt.writebackup = false       -- if a file is being edited by another program (o
 opt.whichwrap:append "<>[]hl"
 opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
 -- vim.diagnostic.config({
 -- 	virtual_text = false,
 -- 	only_current_line = true,
