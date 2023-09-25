@@ -6,6 +6,7 @@ local colorscheme_plugin = require("plugins.ui.kanagawa_colorscheme")
 local lualine_plugin = require("plugins.ui.lualine")
 local nvim_tree_plugin = require("plugins.ui.nvim_tree")
 local symbols_outline_plugin = require("plugins.ui.symbols_outline")
+local window_picker_plugin = require("plugins.ui.window_picker")
 
 --- @type LazyPluginSpec[]
 return {
@@ -17,4 +18,5 @@ return {
 	colorscheme_plugin,
 	nvim_tree_plugin,
 	symbols_outline_plugin,
+	window_picker_plugin,
 }
