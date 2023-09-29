@@ -3,7 +3,7 @@
 return {
   {
     "nvim-lua/plenary.nvim",
-    scommit = "0232372b906f275f76ac42029eba25eaf95e76b9",
+    commit = "0232372b906f275f76ac42029eba25eaf95e76b9",
     lazy = false,
     priority = 1000,
   },
