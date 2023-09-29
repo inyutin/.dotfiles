@@ -5,8 +5,8 @@ local illuminate_plugin = require("plugins.editor.illuminate")
 
 --- @type LazyPluginSpec[]
 return {
-	comment_plugin,
-	copilot_plugin,
-	flash_plugin,
-	illuminate_plugin,
+  comment_plugin,
+  copilot_plugin,
+  flash_plugin,
+  illuminate_plugin,
 }

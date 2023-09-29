@@ -22,6 +22,7 @@ opt.showmode = false          -- we don't need to see things like -- INSERT -- a
 opt.pumheight = 10            -- pop up menu height
 opt.relativenumber = true     -- set relative numbered lines
 opt.scrolloff = 8             -- min amount of lines to show below current line
+opt.expandtab = true
 opt.shiftwidth = 2            -- the number of spaces inserted for each indentation
 opt.shortmess:append "c"      -- don't show ins-completion-menu messages.
 opt.showtabline = 2           -- always show editor tabs
@@ -51,6 +52,20 @@ opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 -- https://unix.stackexchange.com/a/383044
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-	command = "if mode() != 'c' | checktime | endif",
-	pattern = { "*" },
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python", -- filetype for which to run the autocmd
+  callback = function()
+    vim.cmd.inoreabbrev("<buffer> true True")
+    vim.cmd.inoreabbrev("<buffer> false False")
+
+    vim.cmd.inoreabbrev("<buffer> -- #")
+    vim.cmd.inoreabbrev("<buffer> null None")
+    vim.cmd.inoreabbrev("<buffer> none None")
+    vim.cmd.inoreabbrev("<buffer> nil None")
+  end,
 })
