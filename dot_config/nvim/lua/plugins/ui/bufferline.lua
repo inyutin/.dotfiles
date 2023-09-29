@@ -9,6 +9,15 @@ local bufferline_plugin = {
       color_icons = true,
       show_buffer_icons = true,
       offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1, separator = true } },
+      custom_filter = function(buf_number, _)
+        for _, value in ipairs({ "NvimTree", "help", "qf" }) do
+          -- qf is for lsp references
+          if vim.bo[buf_number].filetype == value then
+            return false
+          end
+        end
+        return true
+      end,
     },
   },
   config = function(_, opts)
