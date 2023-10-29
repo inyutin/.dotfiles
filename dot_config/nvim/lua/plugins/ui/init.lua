@@ -6,10 +6,12 @@ local harpoon_plugin = require("plugins.ui.harpoon")
 local colorscheme_plugin = require("plugins.ui.kanagawa_colorscheme")
 local lualine_plugin = require("plugins.ui.lualine")
 local nvim_tree_plugin = require("plugins.ui.nvim_tree")
+local stickybuf_plugin = require("plugins.ui.stickybuf")
 local window_picker_plugin = require("plugins.ui.window_picker")
 
 --- @type LazyPluginSpec[]
 return {
+  aerial_plugin,
   bbye_plugin,
   bufferline_plugin,
   gitsigns_plugin,
@@ -17,6 +19,6 @@ return {
   lualine_plugin,
   colorscheme_plugin,
   nvim_tree_plugin,
-  aerial_plugin,
+  stickybuf_plugin,
   window_picker_plugin,
 }
