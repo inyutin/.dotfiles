@@ -1,5 +1,5 @@
 -- https://github.com/nvim-telescope/telescope.nvim/issues/2104
-local findLspClasses = function()
+local find_lsp_classes = function()
   local symbol_opts = {
     symbols = {
       "class",
@@ -12,14 +12,38 @@ end
 --- @type LazyPluginSpec
 local telescope_plugin = {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.3",
-  config = function()
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-    vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-    vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
-    vim.keymap.set("n", "<leader>fc", findLspClasses, opts)
+  tag = "0.1.4",
+  dependencies = {
+    {
+      "debugloop/telescope-undo.nvim",
+      commit = "3dec002ea3e7952071d26fbb5d01e2038a58a554",
+    },
+  },
+  config = function(_, _)
+    require('telescope').setup({
+      extensions = { undo = {} },
+      defaults = {
+        mappings = {
+          n = {
+            ['<c-d>'] = require('telescope.actions').delete_buffer
+          },
+          i = {
+            ['<c-d>'] = require('telescope.actions').delete_buffer
+          },
+        },
+      },
+    })
+    require("telescope").load_extension("undo")
+
+    local keymaps_opts = { noremap = true, silent = true }
+    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fh", "<cmd>Telescope quickfixhistory<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>flc", find_lsp_classes, keymaps_opts)
   end,
 }
 return telescope_plugin
