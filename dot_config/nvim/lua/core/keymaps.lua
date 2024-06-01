@@ -20,6 +20,10 @@ vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
+-- Splits
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", opts)
+vim.keymap.set("n", "<leader>sx", ":split<CR>", opts)
+
 -- VISUAL MODE --
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", opts)

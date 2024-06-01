@@ -22,4 +22,10 @@ return {
     },
     priority = 999,
   },
+  {
+    'junegunn/fzf',
+    build = function()
+      vim.fn['fzf#install']()
+    end
+  }
 }
