@@ -1,12 +1,18 @@
 local outline_plugin = {
   "hedyhli/outline.nvim",
-  commit = "dd536ac0bdd9d68c5d0d9ae1bb33356f18567197",
   lazy = true,
   cmd = { "Outline", "OutlineOpen" },
   keys = {
-    { "<leader>to", "<cmd>Outline[!]<CR>", desc = "Toggle outline" },
+    { "<leader>to", "<cmd>Outline!<CR>", desc = "Toggle outline" },
   },
-  opts = {},
+  opts = {
+    outline_window = {
+      show_numbers = true,
+      show_relative_numbers = true,
+    },
+    preview_window = {
+      auto_preview = true,
+    },
+  },
 }
-
 return outline_plugin
