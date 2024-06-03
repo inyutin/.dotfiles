@@ -4,11 +4,13 @@ local ensure_installed = {
   "markdown",
   "bash",
   "lua",
+  "dap_repl",
 }
 
 --- @type LazyPluginSpec
 local treesitter_plugin = {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = { 'nvim-dap-repl-highlights' },
   commit = "d94e1ad9575cc211b5726f09b28ca9454aba22fe",
   build = ":TSUpdate",
   config = function(_, _)

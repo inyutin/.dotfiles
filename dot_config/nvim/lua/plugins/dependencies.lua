@@ -14,6 +14,11 @@ return {
     priority = 1000,
   },
   {
+    "nvim-neotest/nvim-nio",
+    priority = 1000,
+    lazy = false,
+  },
+  {
     "nvim-lua/popup.nvim",
     commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac",
     lazy = false,

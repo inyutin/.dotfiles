@@ -1,7 +1,7 @@
 local languages_all = require('plugins.lsp.languages.all')
 local cmp_plugin = require('plugins.lsp.cmp')
 local lsp_signature_plugin = require('plugins.lsp.lsp_signature')
-
+local dap_plugin = require("plugins.lsp.dap")
 
 --- @type LazyPluginSpec
 local neoconf_plugin = {
@@ -36,6 +36,7 @@ local mason_plugin = {
     },
   }
 }
+
 
 local null_ls_plugin = {
   "jose-elias-alvarez/null-ls.nvim",
@@ -91,4 +92,5 @@ return {
   lsp_config_plugin,
   cmp_plugin,
   lsp_signature_plugin,
+  dap_plugin,
 }
