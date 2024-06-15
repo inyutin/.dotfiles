@@ -3,7 +3,6 @@
 local copilot_plugin = {
   "zbirenbaum/copilot.lua",
   event = "VeryLazy",
-  commit = "2c942f33ba5c621c906e625e00a1bb504b65e2f0",
   build = ":Copilot auth",
   opts = {
     suggestion = {

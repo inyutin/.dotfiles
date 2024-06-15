@@ -156,7 +156,6 @@ local nvim_tree_opts = {
 --- @type LazyPluginSpec
 local nvim_tree_plugin = {
   'nvim-tree/nvim-tree.lua',
-  commit = "b7f6600bc2b4e48e4af45f1e77d2bf170685a542",
   opts = nvim_tree_opts,
 }
 return nvim_tree_plugin

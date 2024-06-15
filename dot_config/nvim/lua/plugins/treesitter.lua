@@ -11,7 +11,6 @@ local ensure_installed = {
 local treesitter_plugin = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = { 'nvim-dap-repl-highlights' },
-  commit = "d94e1ad9575cc211b5726f09b28ca9454aba22fe",
   build = ":TSUpdate",
   config = function(_, _)
     local configs = require("nvim-treesitter.configs")
@@ -34,7 +33,6 @@ local treesitter_plugin = {
 --- @type LazyPluginSpec
 local treesitter_context_plugin = {
   "nvim-treesitter/nvim-treesitter-context",
-  commit = "3e7c60982c98a9f5e7b6b0fb7c9ba5318f752fe1",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },

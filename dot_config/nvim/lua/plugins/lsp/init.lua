@@ -77,7 +77,6 @@ local null_ls_plugin = {
 --- @type LazyPluginSpec
 local lsp_config_plugin = {
   "neovim/nvim-lspconfig",
-  commit = "f7922e59aeb9bc3e31a660ea4e7405ffa3fc2c3a",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     neoconf_plugin,

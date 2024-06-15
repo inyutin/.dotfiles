@@ -1,7 +1,6 @@
 --- @type LazyPluginSpec
 local kanagawa_colorscheme_plugin = {
   "rebelot/kanagawa.nvim",
-  commit = "0a24e504a3a278849ad0aef31cd6dd24c73ca3db",
   opts = {
     compile = false,
     undercurl = true,

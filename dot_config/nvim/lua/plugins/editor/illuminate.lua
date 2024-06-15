@@ -1,7 +1,6 @@
 --- @type LazyPluginSpec
 local illuminate_plugin = {
   "RRethy/vim-illuminate",
-  commit = "76f28e858f1caae87bfa45fb4fd09e4b053fc45b",
   opts = {
     providers = {
       'lsp',

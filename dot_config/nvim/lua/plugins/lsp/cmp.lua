@@ -6,17 +6,14 @@ local keymaps_opts = { noremap = true, silent = true }
 local dependencies = {
   {
     "hrsh7th/cmp-buffer",
-    commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
     lazy = true,
   },
   {
     "hrsh7th/cmp-path",
-    commit = "91ff86cd9c29299a64f968ebb45846c485725f23",
     lazy = true,
   },
   {
     "hrsh7th/cmp-nvim-lsp",
-    commit = "44b16d11215dce86f253ce0c30949813c0a90765",
     lazy = true,
   },
   dap_plugin,
@@ -213,7 +210,6 @@ end
 --- @type LazyPluginSpec
 return {
   "hrsh7th/nvim-cmp",
-  commit = "5260e5e8ecadaf13e6b82cf867a909f54e15fd07",
   dependencies = dependencies,
   config = function(_, _)
     -- Setup cmp with default lsp completion comparator

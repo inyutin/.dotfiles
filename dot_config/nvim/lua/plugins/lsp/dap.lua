@@ -51,7 +51,6 @@ local dap_plugin = {
     -- For specific languages
     {
       "mfussenegger/nvim-dap-python",
-      commit = "66560f0ebddf96604f7037e1efad3ba6942761e6"
     }
   },
   config = function()

@@ -10,7 +10,6 @@ end
 --- @type LazyPluginSpec
 local gitsigns_plugin = {
   "lewis6991/gitsigns.nvim",
-  commit = "fef5d90953f0a730483b44745fae5938ba8227f8",
   event = "VeryLazy",
   opts = {
     on_attach = on_attach,

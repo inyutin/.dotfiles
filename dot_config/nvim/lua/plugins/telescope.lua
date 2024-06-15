@@ -16,7 +16,6 @@ local telescope_plugin = {
   dependencies = {
     {
       "debugloop/telescope-undo.nvim",
-      commit = "3dec002ea3e7952071d26fbb5d01e2038a58a554",
     },
   },
   config = function(_, _)
