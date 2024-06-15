@@ -45,20 +45,15 @@ local function get_python_language()
     lsp_servers = {
       pyright = {
         root_dir = get_root_dir,
+        on_attach = shared_on_attach,
         capabilities = capabilities,
         filetypes = { "python" },
         settings = {
           python = pyright_python_settings,
         },
-        on_attach = shared_on_attach,
       },
     },
     null_ls_sources = {
-      -- formatting
-      null_ls.builtins.formatting.black.with({
-        extra_args = black_extra_args,
-      }),
-      -- -- diagnostics
       null_ls.builtins.diagnostics.ruff.with({
         extra_args = ruff_extra_args,
       })

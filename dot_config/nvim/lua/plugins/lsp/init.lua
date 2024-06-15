@@ -6,9 +6,6 @@ local dap_plugin = require("plugins.lsp.dap")
 --- @type LazyPluginSpec
 local neoconf_plugin = {
   "folke/neoconf.nvim",
-  commit = "4a344462d45a08e81b19aa3d63d2bfe06404eec0",
-  cmd = "Neoconf",
-  lazy = true,
   opts = {}
 }
 
@@ -38,27 +35,41 @@ local mason_plugin = {
 }
 
 
+--- @type LazyPluginSpec
+local conform_plugin = {
+  'stevearc/conform.nvim',
+  config = function(_, _)
+    require("conform").setup({
+      formatters_by_ft = {
+        python = { "ruff_format" },
+      },
+    })
+    require("conform.formatters.ruff_format").args = {
+      "format",
+      "--config",
+      "/home/dmitry/Code/fuse/python_monorepo/pyproject.toml",
+      "--stdin-filename",
+      "$FILENAME",
+      "-",
+    }
+    require("conform").setup({
+      format_on_save = {
+        async = true,
+        quiet = true,
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+    })
+  end,
+}
+
 local null_ls_plugin = {
   "jose-elias-alvarez/null-ls.nvim",
   config = function(_, _)
-    -- TODO: use more null-ls features
+    -- Null_ls is used for diagnostics only
     local null_ls = require("null-ls")
-    local augroup = vim.api.nvim_create_augroup("NullLsFormatting", {})
-
     null_ls.setup({
       sources = languages_all.get_all_null_ls_sources(),
-      on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-          })
-        end
-      end,
     })
   end,
 }
@@ -72,6 +83,7 @@ local lsp_config_plugin = {
     neoconf_plugin,
     mason_plugin,
     cmp_plugin,
+    conform_plugin,
     null_ls_plugin,
   },
   opts = function()
@@ -89,6 +101,7 @@ local lsp_config_plugin = {
 
 --- @type LazyPluginSpec[]
 return {
+  conform_plugin,
   lsp_config_plugin,
   cmp_plugin,
   lsp_signature_plugin,
