@@ -100,14 +100,20 @@ local nvim_tree_opts = {
     timeout = 500,
   },
   view = {
-    width = {},
+    width = {
+      min = 10,
+      max = 50,
+    },
     hide_root_folder = false,
     side = "left",
     number = true,
     relativenumber = true,
   },
   actions = {
-    open_file = {
+    change_dir = {
+      enable = false,
+    },
+    open_file  = {
       resize_window = true,
       window_picker = { enable = true },
     },
