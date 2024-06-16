@@ -3,7 +3,6 @@ local nvim_window_picker = {
   's1n7ax/nvim-window-picker',
   name = 'window-picker',
   event = 'VeryLazy',
-  tag = "v2.0.2",
   opts = {
     hint = 'floating-big-letter',
     selection_chars = 'FJDKSLA;CMRUEIWOQP',

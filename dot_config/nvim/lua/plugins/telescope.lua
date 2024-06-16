@@ -12,7 +12,6 @@ end
 --- @type LazyPluginSpec
 local telescope_plugin = {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.4",
   dependencies = {
     {
       "debugloop/telescope-undo.nvim",

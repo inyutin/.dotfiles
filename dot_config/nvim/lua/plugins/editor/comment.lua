@@ -1,7 +1,6 @@
 --- @type LazyPluginSpec
 local comment_plugin = {
   'numToStr/Comment.nvim',
-  tag = 'v0.8.0',
   lazy = true,
   event = "VeryLazy",
   keys = {

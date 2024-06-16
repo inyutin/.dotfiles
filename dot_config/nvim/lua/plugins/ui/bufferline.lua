@@ -1,7 +1,6 @@
 --- @type LazyPluginSpec
 local bufferline_plugin = {
   'akinsho/bufferline.nvim',
-  tag = "v4.3.0",
   opts = {
     options = {
       themable = true,

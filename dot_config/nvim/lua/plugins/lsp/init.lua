@@ -14,7 +14,6 @@ local neoconf_plugin = {
 local mason_plugin = {
   --- TODO: what else Mason can do, what other options are available?
   "williamboman/mason-lspconfig.nvim",
-  tag = "v1.13.0",
   opts = function()
     return {
       ensure_installed = languages_all.get_all_lsp_server_names(),
@@ -25,7 +24,6 @@ local mason_plugin = {
   dependencies = {
     {
       "williamboman/mason.nvim",
-      tag = "v1.6.2",
       opts = {
         enable = true,
         package_dir = vim.fn.stdpath("data") .. "/mason",
