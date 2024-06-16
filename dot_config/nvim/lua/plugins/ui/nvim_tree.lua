@@ -104,7 +104,6 @@ local nvim_tree_opts = {
       min = 10,
       max = 50,
     },
-    hide_root_folder = false,
     side = "left",
     number = true,
     relativenumber = true,
