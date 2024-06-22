@@ -36,6 +36,7 @@
   "outline.nvim": { "branch": "main", "commit": "028e0bc8ad3d511e9fc1f0678594a608eb908ee5" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "precognition.nvim": { "branch": "main", "commit": "02dcc8f8db677fe02d2dd68da6155177283fe711" },
   "telescope.nvim": { "branch": "master", "commit": "f2bfde705ac752c52544d5cfa8b0aee0a766c1ed" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "vim-bbye": { "branch": "master", "commit": "25ef93ac5a87526111f43e5110675032dbcacf56" },
