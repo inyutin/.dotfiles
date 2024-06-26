@@ -16,6 +16,8 @@ local copilot_plugin = {
       enabled = false,
     },
     filetypes = {
+      ["grug-far"] = false,
+      ["grug-far-history"] = false,
       ["*"] = true,
     },
   },
