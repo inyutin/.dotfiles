@@ -40,6 +40,7 @@ local telescope_plugin = {
     vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", keymaps_opts)
     vim.keymap.set("n", "<leader>fq", "<cmd>Telescope quickfix<cr>", keymaps_opts)
     vim.keymap.set("n", "<leader>fG", "<cmd>Telescope git_status<cr>", keymaps_opts)
+    vim.keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", keymaps_opts)
     vim.keymap.set("n", "<leader>flc", find_lsp_classes, keymaps_opts)
   end,
 }
