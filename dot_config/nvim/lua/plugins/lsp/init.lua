@@ -1,7 +1,9 @@
 local languages_all = require('plugins.lsp.languages.all')
+
 local cmp_plugin = require('plugins.lsp.cmp')
-local lsp_signature_plugin = require('plugins.lsp.lsp_signature')
 local dap_plugin = require("plugins.lsp.dap")
+local garbage_day_plugin = require("plugins.lsp.garbage_day")
+local lsp_signature_plugin = require('plugins.lsp.lsp_signature')
 
 --- @type LazyPluginSpec
 local neoconf_plugin = {
@@ -101,6 +103,7 @@ return {
   conform_plugin,
   lsp_config_plugin,
   cmp_plugin,
-  lsp_signature_plugin,
   dap_plugin,
+  garbage_day_plugin,
+  lsp_signature_plugin,
 }
