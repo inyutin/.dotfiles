@@ -5,6 +5,7 @@ local colorscheme_plugin = require("plugins.ui.kanagawa_colorscheme")
 local lualine_plugin = require("plugins.ui.lualine")
 local nvim_tree_plugin = require("plugins.ui.nvim_tree")
 local outline_plugin = require("plugins.ui.outline")
+local stickybuf_plugin = require("plugins.ui.stickybuf")
 local undotree_plugin = require("plugins.ui.undotree")
 local window_picker_plugin = require("plugins.ui.window_picker")
 
@@ -17,6 +18,7 @@ return {
   colorscheme_plugin,
   nvim_tree_plugin,
   outline_plugin,
+  stickybuf_plugin,
   undotree_plugin,
   window_picker_plugin,
 }

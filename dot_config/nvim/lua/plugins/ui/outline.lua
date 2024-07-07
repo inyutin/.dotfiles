@@ -1,3 +1,4 @@
+--- @type LazyPluginSpec
 local outline_plugin = {
   "hedyhli/outline.nvim",
   lazy = true,
