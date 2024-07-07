@@ -56,7 +56,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   pattern = { "*" },
 })
 
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python", -- filetype for which to run the autocmd
   callback = function()
@@ -69,3 +68,18 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd.inoreabbrev("<buffer> nil None")
   end,
 })
+
+local signs = { Error = "", Warn = ' ', Hint = '', Info = ' ' }
+vim.diagnostic.config {
+  virtual_text = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = true,
+  },
+}
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = '', linehl = '', numhl = '' })
+end

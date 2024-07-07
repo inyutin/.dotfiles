@@ -39,37 +39,12 @@ local mason_plugin = {
 local conform_plugin = {
   'stevearc/conform.nvim',
   config = function(_, _)
-    require("conform").setup({
-      formatters_by_ft = {
-        python = { "ruff_format" },
-      },
-    })
-    require("conform.formatters.ruff_format").args = {
-      "format",
-      "--config",
-      "/home/dmitry/Code/fuse/python_monorepo/pyproject.toml",
-      "--stdin-filename",
-      "$FILENAME",
-      "-",
-    }
-    require("conform").setup({
-      format_on_save = {
-        async = true,
-        quiet = true,
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
-    })
-  end,
-}
-
-local null_ls_plugin = {
-  "jose-elias-alvarez/null-ls.nvim",
-  config = function(_, _)
-    -- Null_ls is used for diagnostics only
-    local null_ls = require("null-ls")
-    null_ls.setup({
-      sources = languages_all.get_all_null_ls_sources(),
+    require("conform").setup(languages_all.get_combined_conform_setup())
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*",
+      callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+      end,
     })
   end,
 }
@@ -77,13 +52,11 @@ local null_ls_plugin = {
 --- @type LazyPluginSpec
 local lsp_config_plugin = {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     neoconf_plugin,
     mason_plugin,
     cmp_plugin,
     conform_plugin,
-    null_ls_plugin,
   },
   opts = function()
     return {

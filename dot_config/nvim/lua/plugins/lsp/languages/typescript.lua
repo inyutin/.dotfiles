@@ -5,7 +5,10 @@ local function get_typescript_language()
     lsp_servers = {
       tsserver = {}
     },
-    null_ls_sources = {},
+    conform_setup = {
+      formatters = {},
+      formatters_by_ft = {},
+    },
   }
   return typescript_language
 end

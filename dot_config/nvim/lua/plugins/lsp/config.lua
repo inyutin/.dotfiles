@@ -3,12 +3,10 @@ local pyright_conf_defaults = {
   rootDir = nil,
   pythonPath = nil,
   analysis = {
+    ignore = { '*' }, -- Using Ruff
     typeCheckingMode = "basic",
+    diagnosticMode = "openFilesOnly"
   },
-}
-
-local black_conf_defaults = {
-  config_path = nil,
 }
 
 local ruff_conf_defaults = {
@@ -17,7 +15,6 @@ local ruff_conf_defaults = {
 
 
 local python_conf_defaults = {
-  black = black_conf_defaults,
   ruff = ruff_conf_defaults,
   pyright = pyright_conf_defaults,
 }

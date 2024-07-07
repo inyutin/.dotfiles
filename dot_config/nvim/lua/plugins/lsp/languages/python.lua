@@ -26,19 +26,13 @@ local function get_python_language()
     pyright_python_settings.pythonPath = python_settings.pyright.pythonPath
   end
 
-  local black_extra_args = {}
-  if python_settings.black.config_path ~= nil then
-    table.insert(black_extra_args, "--config")
-    table.insert(black_extra_args, python_settings.black.config_path)
-  end
-
   local ruff_extra_args = {}
   if python_settings.ruff.config_path ~= nil then
     table.insert(ruff_extra_args, "--config")
     table.insert(ruff_extra_args, python_settings.ruff.config_path)
   end
 
-  local null_ls = require("null-ls")
+  local _unpack = unpack or table.unpack
 
   --- @type LspLanguage
   local python_language = {
@@ -49,14 +43,49 @@ local function get_python_language()
         capabilities = capabilities,
         filetypes = { "python" },
         settings = {
+          pyright = {
+            disableOrganizeImports = true, -- Using Ruff
+          },
           python = pyright_python_settings,
         },
       },
+      ruff_lsp = {
+        root_dir = get_root_dir,
+        on_attach = shared_on_attach,
+        capabilities = capabilities,
+        filetypes = { "python" },
+        init_options = {
+          settings = {
+            args = ruff_extra_args,
+          }
+        }
+      },
     },
-    null_ls_sources = {
-      null_ls.builtins.diagnostics.ruff.with({
-        extra_args = ruff_extra_args,
-      })
+    conform_setup = {
+      formatters_by_ft = {
+        python = { "ruff_format", "ruff_fix" },
+      },
+      formatters = {
+        ruff_format = {
+          args = {
+            "format",
+            "--stdin-filename",
+            "$FILENAME",
+            "-",
+            _unpack(ruff_extra_args),
+          }
+        },
+        ruff_fix = {
+          args = {
+            "check",
+            "--fix",
+            "--stdin-filename",
+            "$FILENAME",
+            "-",
+            _unpack(ruff_extra_args),
+          }
+        }
+      }
     },
   }
   return python_language

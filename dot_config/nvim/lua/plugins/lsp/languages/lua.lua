@@ -34,7 +34,10 @@ local function get_lua_language()
     lsp_servers = {
       lua_ls = lua_lsp_settings,
     },
-    null_ls_sources = {}
+    conform_setup = {
+      formatters = {},
+      formatters_by_ft = {},
+    },
   }
   return lua_language
 end

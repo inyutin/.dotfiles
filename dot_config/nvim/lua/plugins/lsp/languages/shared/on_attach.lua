@@ -12,19 +12,12 @@ return function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
-  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-  if client.supports_method("textDocument/formatting") then
-    local format_bfr = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end
-
-    vim.keymap.set('n', '<space>gf', format_bfr, bufopts)
-
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = format_bfr
-    })
+  if client.name == 'ruff_lsp' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
   end
+
+  vim.keymap.set("n", "<leader>vd", function()
+    vim.diagnostic.open_float()
+  end)
 end
