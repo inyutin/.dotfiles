@@ -42,6 +42,7 @@ opt.undofile = true           -- enable persistent undo
 opt.updatetime = 300          -- faster completion (4000ms default)
 opt.wrap = true               -- wrap lines
 opt.writebackup = false       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+opt.cursorline = true
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
@@ -68,18 +69,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd.inoreabbrev("<buffer> nil None")
   end,
 })
-
-local signs = { Error = "", Warn = ' ', Hint = '', Info = ' ' }
-vim.diagnostic.config {
-  virtual_text = true,
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    border = 'rounded',
-    source = true,
-  },
-}
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = '', linehl = '', numhl = '' })
-end

@@ -68,6 +68,21 @@ local lsp_config_plugin = {
     for server, server_opts in pairs(servers) do
       require("lspconfig")[server].setup(server_opts)
     end
+
+    local signs = { Error = "", Warn = ' ', Hint = '', Info = ' ' }
+    vim.diagnostic.config {
+      virtual_text = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        border = 'rounded',
+        source = true,
+      },
+    }
+    for type, icon in pairs(signs) do
+      local hl = 'DiagnosticSign' .. type
+      vim.fn.sign_define(hl, { text = icon,  texthl = hl, linehl = '', numhl = ''})
+    end
   end,
 }
 

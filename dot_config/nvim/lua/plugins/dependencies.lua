@@ -12,6 +12,33 @@ return {
     priority = 1000,
   },
   {
+    'echasnovski/mini.icons',
+    priority = 1000,
+    version = false,
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+      style = 'glyph',
+      filetype = {
+        ["toml"] = {glyph = "" },
+      },
+      file = {
+        ["init.lua"] = {glyph = '', hl = 'MiniIconsBlue'},
+      },
+    },
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
+  {
     "nvim-neotest/nvim-nio",
     priority = 1000,
     lazy = false,
