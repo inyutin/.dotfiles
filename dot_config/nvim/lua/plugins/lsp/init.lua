@@ -18,7 +18,7 @@ local mason_plugin = {
   "williamboman/mason-lspconfig.nvim",
   opts = function()
     return {
-      ensure_installed = languages_all.get_all_lsp_server_names(),
+      ensure_installed = languages_all.get_all_lsp_server_names({"nushell"}),
       automatic_installation = true,
     }
   end,

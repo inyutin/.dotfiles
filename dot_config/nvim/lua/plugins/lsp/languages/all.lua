@@ -1,10 +1,12 @@
 local get_lua_language = require('plugins.lsp.languages.lua')
+local get_nushell_language = require('plugins.lsp.languages.nushell')
 local get_python_language = require('plugins.lsp.languages.python')
 local get_typescript_language = require('plugins.lsp.languages.typescript')
 
 ---@type (fun(): LspLanguage)[]
 local languages = {
   get_lua_language,
+  get_nushell_language,
   get_python_language,
   get_typescript_language,
 }
@@ -23,14 +25,17 @@ local function get_all_lsp_servers()
 end
 
 
+---@param ignore_servers table<string>
 ---@return string[]
-local function get_all_lsp_server_names()
+local function get_all_lsp_server_names(ignore_servers)
   ---@type string[]
   local res = {}
   for language_count = 1, #languages do
     local language = languages[language_count]()
-    for k, _ in pairs(language.lsp_servers) do
-      table.insert(res, k)
+    for name, _ in pairs(language.lsp_servers) do
+      if ignore_servers == nil or not ignore_servers[name] then
+        table.insert(res, name)
+      end
     end
   end
   return res

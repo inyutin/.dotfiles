@@ -22,6 +22,7 @@ return {
     opts = {
       style = 'glyph',
       filetype = {
+        ["nu"] = {glyph = ">" },
         ["toml"] = {glyph = "" },
       },
       file = {

@@ -10,7 +10,10 @@ local ensure_installed = {
 --- @type LazyPluginSpec
 local treesitter_plugin = {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { 'nvim-dap-repl-highlights' },
+  dependencies = {
+    "nvim-dap-repl-highlights",
+    "nushell/tree-sitter-nu",
+  },
   build = ":TSUpdate",
   config = function(_, _)
     local configs = require("nvim-treesitter.configs")
