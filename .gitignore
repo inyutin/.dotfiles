@@ -1,3 +1,7 @@
 dot_config/nvim/plugin/
 dot_config/zellij/dot_local/
 dot_config/nvim/lua/dot_luarc.json
+
+dot_config/nushell/setup/alias_local.nu
+dot_config/nushell/setup/env_local.nu
+dot_config/nushell/history.txt
