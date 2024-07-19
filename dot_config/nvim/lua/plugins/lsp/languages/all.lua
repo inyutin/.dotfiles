@@ -33,9 +33,13 @@ local function get_all_lsp_server_names(ignore_servers)
   for language_count = 1, #languages do
     local language = languages[language_count]()
     for name, _ in pairs(language.lsp_servers) do
-      if ignore_servers == nil or not ignore_servers[name] then
-        table.insert(res, name)
+      for _, ignore_server in pairs(ignore_servers) do
+        if name == ignore_server then
+          goto continue
+        end
       end
+      table.insert(res, name)
+      ::continue::
     end
   end
   return res
