@@ -1,9 +1,15 @@
 local ensure_installed = {
+  -- Languages
   "python",
+  "lua",
+  -- Markup
   "dockerfile",
   "markdown",
+  "json",
+  -- Shell
   "bash",
-  "lua",
+  "nu",
+  -- Plugins
   "dap_repl",
 }
 
@@ -11,11 +17,12 @@ local ensure_installed = {
 local treesitter_plugin = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    "nvim-dap-repl-highlights",
+    "LiadOz/nvim-dap-repl-highlights",
     "nushell/tree-sitter-nu",
   },
   build = ":TSUpdate",
   config = function(_, _)
+    require('nvim-dap-repl-highlights').setup()
     local configs = require("nvim-treesitter.configs")
     configs.setup({
       modules = {},
