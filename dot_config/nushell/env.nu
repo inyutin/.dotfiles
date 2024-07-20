@@ -73,3 +73,18 @@ $env.NU_LIB_DIRS = [
 $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins')
 ]
+
+$env.PYTHON_KEYRING_BACKEND = keyring.backends.null.Keyring
+
+$env.PYENV_ROOT = "pyenv"
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"(pyenv root)/shims")
+
+
+bash -c $"source ~/.bash_profile && env"
+    | lines
+    | parse "{n}={v}"
+    | filter { |x| ($x.n not-in $env) or $x.v != ($env | get $x.n) }
+    | where n not-in ["_", "LAST_EXIT_CODE", "DIRS_POSITION"]
+    | transpose --header-row
+    | into record
+    | load-env
