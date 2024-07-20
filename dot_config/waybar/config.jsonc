@@ -4,7 +4,7 @@
     "height": 30,
     "position": "bottom",
 
-		"modules-left": ["wlr/workspaces"],
+		"modules-left": ["hyprland/workspaces"],
 		"modules-center": ["hyprland/window"],
 		"modules-right": [
         "memory",
@@ -93,8 +93,8 @@
     "backlight": {
         "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1"
+        "on-scroll-up": "brightnessctl s 1%+",
+        "on-scroll-down": "brightnessctl s 1%-"
     },
 
     "battery": {
