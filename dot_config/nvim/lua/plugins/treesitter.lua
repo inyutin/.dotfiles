@@ -6,6 +6,7 @@ local ensure_installed = {
   "dockerfile",
   "markdown",
   "json",
+  "hyprlang",
   -- Shell
   "bash",
   "nu",
@@ -19,6 +20,7 @@ local treesitter_plugin = {
   dependencies = {
     "LiadOz/nvim-dap-repl-highlights",
     "nushell/tree-sitter-nu",
+    "tree-sitter-grammars/tree-sitter-hyprlang",
   },
   build = ":TSUpdate",
   config = function(_, _)

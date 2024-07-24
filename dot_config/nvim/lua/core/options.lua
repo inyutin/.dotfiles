@@ -69,3 +69,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd.inoreabbrev("<buffer> nil None")
   end,
 })
+
+vim.filetype.add({
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})

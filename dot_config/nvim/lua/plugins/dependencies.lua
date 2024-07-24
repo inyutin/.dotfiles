@@ -24,6 +24,7 @@ return {
       filetype = {
         ["nu"] = {glyph = ">" },
         ["toml"] = {glyph = "" },
+        ["hyprlang"] = {glyph = "" },
       },
       file = {
         ["init.lua"] = {glyph = '', hl = 'MiniIconsBlue'},
