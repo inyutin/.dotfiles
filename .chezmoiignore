@@ -1,0 +1,6 @@
+*/nushell/nvim/plugin/
+*/nushell/nvim/lua/dot_luarc.json
+
+*/nushell/setup/alias_local.nu
+*/nushell/setup/env_local.nu
+*/nushell/history.txt
