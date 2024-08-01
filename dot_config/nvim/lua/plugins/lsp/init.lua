@@ -26,7 +26,7 @@ local mason_lsp_config_plugin = {
 	"williamboman/mason-lspconfig.nvim",
 	opts = function()
 		return {
-			ensure_installed = languages_all.get_all_lsp_server_names({ "nushell" }),
+			ensure_installed = languages_all.get_all_lsp_server_names({ "nushell", "nixd" }),
 			automatic_installation = true,
 		}
 	end,
@@ -56,7 +56,7 @@ local conform_plugin = {
 		local formatters_by_ft = conform_setup.formatters_by_ft
 
 		local formatters = {}
-		local not_formatters = { "ruff_format", "ruff_fix" }
+		local not_formatters = { "ruff_format", "ruff_fix", "alejandra" }
 
 		for _, ft_formatters in pairs(formatters_by_ft) do
 			for _, formatter in ipairs(ft_formatters) do
