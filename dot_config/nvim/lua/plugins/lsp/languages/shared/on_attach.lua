@@ -1,7 +1,6 @@
 return function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-  -- See :help vim.lsp.* for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -12,12 +11,19 @@ return function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
-  if client.name == 'ruff_lsp' then
-    -- Disable hover in favor of Pyright
-    client.server_capabilities.hoverProvider = false
-  end
+  -- Open floating windon to show diagnostic
+  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, bufopts)
 
-  vim.keymap.set("n", "<leader>vd", function()
-    vim.diagnostic.open_float()
-  end)
+	local function toggle_inlay_hints()
+		if vim.g.inlay_hints_visible then
+			vim.g.inlay_hints_visible = false
+      vim.lsp.inlay_hint.enable(false, nil)
+		else
+      if client.server_capabilities.inlayHintProvider then
+				vim.g.inlay_hints_visible = true
+        vim.lsp.inlay_hint.enable(true, nil)
+			end
+		end
+	end
+	vim.keymap.set("n", "<leader>vh", toggle_inlay_hints, bufopts)
 end

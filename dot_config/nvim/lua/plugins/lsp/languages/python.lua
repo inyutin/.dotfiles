@@ -7,11 +7,11 @@ local function get_python_language()
 
   local python_settings = config.get_python_settings()
   local function get_root_dir(startpath)
-    local root_dir = python_settings.pyright.rootDir
+    local root_dir = python_settings.basedpyright.rootDir
     if root_dir ~= nil then
       return root_dir
     end
-    for _, pattern in ipairs({ "pyrightconfig.json", "pyproject.toml" }) do
+    for _, pattern in ipairs({ "basedpyrightconfig.json", "pyproject.toml" }) do
       root_dir = require("lspconfig").util.root_pattern(pattern)(startpath)
       if root_dir ~= nil then
         return root_dir
@@ -19,11 +19,11 @@ local function get_python_language()
     end
   end
 
-  local pyright_python_settings = {
-    analysis = python_settings.pyright.analysis,
+  local basedpyright_python_settings = {
+    analysis = python_settings.basedpyright.analysis,
   }
-  if python_settings.pyright.pythonPath ~= nil then
-    pyright_python_settings.pythonPath = python_settings.pyright.pythonPath
+  if python_settings.basedpyright.pythonPath ~= nil then
+    basedpyright_python_settings.pythonPath = python_settings.basedpyright.pythonPath
   end
 
   local ruff_extra_args = {}
@@ -37,21 +37,20 @@ local function get_python_language()
   --- @type LspLanguage
   local python_language = {
     lsp_servers = {
-      pyright = {
+      basedpyright = {
         root_dir = get_root_dir,
         on_attach = shared_on_attach,
         capabilities = capabilities,
         filetypes = { "python" },
         settings = {
-          pyright = {
-            disableOrganizeImports = true, -- Using Ruff
-          },
-          python = pyright_python_settings,
+          basedpyright = basedpyright_python_settings
         },
       },
       ruff_lsp = {
         root_dir = get_root_dir,
-        on_attach = shared_on_attach,
+        on_attach = function(client, bufnr)
+          client.server_capabilities.hoverProvider = false
+        end,
         capabilities = capabilities,
         filetypes = { "python" },
         init_options = {

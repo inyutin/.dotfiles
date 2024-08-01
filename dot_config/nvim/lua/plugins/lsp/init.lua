@@ -1,4 +1,5 @@
 local languages_all = require('plugins.lsp.languages.all')
+local config = require('plugins.lsp.config')
 
 local cmp_plugin = require('plugins.lsp.cmp')
 local dap_plugin = require("plugins.lsp.dap")
@@ -60,7 +61,7 @@ local lsp_config_plugin = {
   },
   opts = function()
     return {
-      servers = languages_all.get_all_lsp_servers()
+      servers = languages_all.get_all_lsp_servers(),
     }
   end,
   config = function(_, opts)
@@ -68,6 +69,9 @@ local lsp_config_plugin = {
     for server, server_opts in pairs(servers) do
       require("lspconfig")[server].setup(server_opts)
     end
+
+    local lsp_settings = config.get_lsp_settings()
+    vim.g.inlay_hints_visible = lsp_settings.inlay_hints_enabled
 
     local signs = { Error = "", Warn = ' ', Hint = '', Info = ' ' }
     vim.diagnostic.config {
