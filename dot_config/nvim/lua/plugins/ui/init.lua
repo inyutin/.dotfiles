@@ -10,13 +10,13 @@ local window_picker_plugin = require("plugins.ui.window_picker")
 
 --- @type LazyPluginSpec[]
 return {
-  bbye_plugin,
-  bufferline_plugin,
-  gitsigns_plugin,
-  lualine_plugin,
-  colorscheme_plugin,
-  nvim_tree_plugin,
-  outline_plugin,
-  undotree_plugin,
-  window_picker_plugin,
+	bbye_plugin,
+	bufferline_plugin,
+	gitsigns_plugin,
+	lualine_plugin,
+	colorscheme_plugin,
+	nvim_tree_plugin,
+	outline_plugin,
+	undotree_plugin,
+	window_picker_plugin,
 }
