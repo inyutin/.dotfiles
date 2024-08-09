@@ -1,0 +1,26 @@
+anchor=top-right
+layer=overlay
+font=Fira Code 11
+width=220
+margin=10,10
+padding=10
+border-size=2
+default-timeout=1500
+group-by=summary
+
+background-color=#0d0c0c
+text-color=#c5c9c5
+border-color=#8ba4b0
+
+[urgency=low]
+background-color=#0d0c0c
+text-color=#c5c9c5
+border-color=#c4b28a
+
+[urgency=high]
+background-color=#0d0c0c
+text-color=#c5c9c5
+border-color=#c4746e
+
+[grouped]
+format=<b>%s</b>\n%b
