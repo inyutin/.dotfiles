@@ -351,5 +351,6 @@ $env.config = {
 source ~/.config/nushell/setup/alias.nu
 source ~/.config/nushell/setup/alias_local.nu
 source ~/.config/nushell/setup/env_local.nu
+source ~/.config/nushell/setup/pyenv.nu
 source ~/.config/nushell/setup/starship.nu
 source ~/.config/nushell/setup/zoxide.nu

@@ -76,10 +76,6 @@ $env.NU_PLUGIN_DIRS = [
 
 $env.PYTHON_KEYRING_BACKEND = keyring.backends.null.Keyring
 
-$env.PYENV_ROOT = "pyenv"
-$env.PATH = ($env.PATH | split row (char esep) | prepend $"(pyenv root)/shims")
-
-
 bash -c $"source ~/.bash_profile && env"
     | lines
     | parse "{n}={v}"

@@ -82,4 +82,3 @@ export def main [] { return {
     shape_variable: purple
     shape_vardecl: purple
 } }
-
