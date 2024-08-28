@@ -106,12 +106,7 @@ $env.config = {
   edit_mode: vi
   render_right_prompt_on_last_line: false
   hooks: {
-    pre_prompt: [{ ||
-      if (which direnv | is-empty) {
-        return
-      }
-      direnv export json | from json | default {} | load-env
-    }]
+    pre_prompt: []
     pre_execution: [{||
       null
     }]
@@ -351,6 +346,7 @@ $env.config = {
 source ~/.config/nushell/setup/alias.nu
 source ~/.config/nushell/setup/alias_local.nu
 source ~/.config/nushell/setup/env_local.nu
+source ~/.config/nushell/setup/direnv.nu
 source ~/.config/nushell/setup/pyenv.nu
 source ~/.config/nushell/setup/starship.nu
 source ~/.config/nushell/setup/zoxide.nu
