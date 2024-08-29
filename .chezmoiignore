@@ -4,3 +4,5 @@
 */nushell/setup/alias_local.nu
 */nushell/setup/env_local.nu
 */nushell/history.txt
+
+*/gpt-cli/history
