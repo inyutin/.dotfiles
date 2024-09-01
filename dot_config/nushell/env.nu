@@ -79,7 +79,8 @@ $env.PYTHON_KEYRING_BACKEND = keyring.backends.null.Keyring
 # Required for nix packages to work with locales
 $env.LOCALE_ARCHIVE = /usr/lib/locale/locale-archive
 
-bash -c $"source ~/.bash_profile && env"
+if ("/home/dmitry/.nix-profile/etc/profile.d/nix.sh" | path expand | path exists) {
+  bash -c $"source /home/dmitry/.nix-profile/etc/profile.d/nix.sh && env"
     | lines
     | parse "{n}={v}"
     | filter { |x| ($x.n not-in $env) or $x.v != ($env | get $x.n) }
@@ -87,3 +88,4 @@ bash -c $"source ~/.bash_profile && env"
     | transpose --header-row
     | into record
     | load-env
+}
