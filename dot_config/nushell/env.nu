@@ -76,6 +76,9 @@ $env.NU_PLUGIN_DIRS = [
 
 $env.PYTHON_KEYRING_BACKEND = keyring.backends.null.Keyring
 
+# Required for nix packages to work with locales
+$env.LOCALE_ARCHIVE = /usr/lib/locale/locale-archive
+
 bash -c $"source ~/.bash_profile && env"
     | lines
     | parse "{n}={v}"
