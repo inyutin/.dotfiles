@@ -1,8 +1,8 @@
 local shared_on_attach = require("plugins.lsp.languages.shared.on_attach")
 
---- @return lsplanguage
+--- @return LspLanguage
 local function get_gleam_language()
-	--- @type lsplanguage
+	--- @type LspLanguage
 	local language = {
 		lsp_servers = {
 			gleam = {

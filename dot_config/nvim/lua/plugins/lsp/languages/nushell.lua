@@ -3,7 +3,7 @@ local shared_on_attach = require("plugins.lsp.languages.shared.on_attach")
 --- @return LspLanguage
 local function get_nushell_language()
 	--- @type LspLanguage
-	local lua_language = {
+	local language = {
 		lsp_servers = {
 			nushell = {
 				on_attach = shared_on_attach,
@@ -14,7 +14,7 @@ local function get_nushell_language()
 			formatters_by_ft = {},
 		},
 	}
-	return lua_language
+	return language
 end
 
 return get_nushell_language
