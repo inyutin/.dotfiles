@@ -26,4 +26,7 @@ return function(client, bufnr)
 		end
 	end
 	vim.keymap.set("n", "<leader>vh", toggle_inlay_hints, bufopts)
+
+	-- Disable highlighting by lsp
+	client.server_capabilities.semanticTokensProvider = nil
 end
