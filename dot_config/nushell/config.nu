@@ -65,8 +65,6 @@ $env.config = {
     vi_normal: underscore
   }
   color_config: (default_dark)
-  use_grid_icons: true
-  footer_mode: "25"
   float_precision: 2
   use_ansi_coloring: true
   bracketed_paste: true
