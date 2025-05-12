@@ -48,15 +48,21 @@ return {
 	{
 		"nvim-lua/popup.nvim",
 		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
 		priority = 999,
+	},
+	{
+		"MunifTanjim/nui.nvim",
+		priority = 998,
+	},
+	{
+		"stevearc/dressing.nvim",
+		priority = 998,
 	},
 	{
 		"junegunn/fzf",
 		build = function()
 			vim.fn["fzf#install"]()
 		end,
+		priority = 998,
 	},
 }
