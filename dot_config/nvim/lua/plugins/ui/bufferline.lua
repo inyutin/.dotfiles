@@ -29,8 +29,8 @@ local bufferline_plugin = {
 		vim.keymap.set("n", "gbP", ":BufferLineTogglePin<cr>")
 
 		-- Navigate by tabs
-		vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
-		vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
+		vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
 		-- Navigate by numbers
 		vim.keymap.set("n", "<leader>1", ":BufferLineGoToBuffer 1<cr>")
