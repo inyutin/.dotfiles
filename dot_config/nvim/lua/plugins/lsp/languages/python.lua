@@ -46,7 +46,7 @@ local function get_python_language()
 					basedpyright = basedpyright_python_settings,
 				},
 			},
-			ruff_lsp = {
+			ruff = {
 				root_dir = get_root_dir,
 				on_attach = function(client, bufnr)
 					client.server_capabilities.hoverProvider = false
