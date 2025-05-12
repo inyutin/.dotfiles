@@ -10,13 +10,13 @@ local various_textobjs = require("plugins.editor.various_textobjs")
 
 --- @type LazyPluginSpec[]
 return {
-  bqf_plugin,
-  comment_plugin,
-  copilot_plugin,
-  flash_plugin,
-  grug_far_plugin,
-  illuminate_plugin,
-  multiple_cursors_plugin,
-  precognition_plugin,
-  various_textobjs,
+	bqf_plugin,
+	comment_plugin,
+	copilot_plugin,
+	flash_plugin,
+	grug_far_plugin,
+	illuminate_plugin,
+	multiple_cursors_plugin,
+	precognition_plugin,
+	various_textobjs,
 }
