@@ -26,7 +26,7 @@ local mason_lsp_config_plugin = {
 	"williamboman/mason-lspconfig.nvim",
 	opts = function()
 		return {
-			ensure_installed = languages_all.get_all_lsp_server_names({ "nushell", "nixd", "gleam" }),
+			ensure_installed = languages_all.get_all_lsp_server_names({ "nushell", "nixd" }),
 			automatic_installation = true,
 		}
 	end,
@@ -90,6 +90,7 @@ local lsp_config_plugin = {
 		local servers = opts.servers
 		for server, server_opts in pairs(servers) do
 			require("lspconfig")[server].setup(server_opts)
+			vim.lsp.enable(server, false)
 		end
 
 		local lsp_settings = config.get_lsp_settings()

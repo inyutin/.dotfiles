@@ -2,7 +2,6 @@ local get_lua_language = require("plugins.lsp.languages.lua")
 local get_nix_language = require("plugins.lsp.languages.nix")
 local get_nushell_language = require("plugins.lsp.languages.nushell")
 local get_python_language = require("plugins.lsp.languages.python")
-local get_gleam_language = require("plugins.lsp.languages.gleam")
 
 ---@type (fun(): LspLanguage)[]
 local languages = {
@@ -10,7 +9,6 @@ local languages = {
 	get_nix_language,
 	get_nushell_language,
 	get_python_language,
-	get_gleam_language,
 }
 
 ---@return table<string, table>
