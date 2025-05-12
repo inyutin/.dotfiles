@@ -2,7 +2,6 @@ local languages_all = require("plugins.lsp.languages.all")
 local config = require("plugins.lsp.config")
 
 local cmp_plugin = require("plugins.lsp.cmp")
-local dap_plugin = require("plugins.lsp.dap")
 local garbage_day_plugin = require("plugins.lsp.garbage_day")
 local lsp_signature_plugin = require("plugins.lsp.lsp_signature")
 
@@ -118,7 +117,6 @@ return {
 	conform_plugin,
 	lsp_config_plugin,
 	cmp_plugin,
-	dap_plugin,
 	garbage_day_plugin,
 	lsp_signature_plugin,
 }

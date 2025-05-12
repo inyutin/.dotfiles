@@ -1,5 +1,3 @@
-local dap_plugin = require("plugins.lsp.dap")
-
 local keymaps_opts = { noremap = true, silent = true }
 
 --- @type LazyPluginSpec[]
@@ -14,11 +12,6 @@ local dependencies = {
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
-		lazy = true,
-	},
-	dap_plugin,
-	{
-		"rcarriga/cmp-dap",
 		lazy = true,
 	},
 }
@@ -127,7 +120,7 @@ local setup_cmp = function(kind_comparator)
 	local cmp = require("cmp")
 	cmp.setup({
 		enabled = function()
-			return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+			return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
 		end,
 		mapping = {
 			-- Accept currently selected item. If none selected, `select` first item.
@@ -213,11 +206,6 @@ return {
 	config = function(_, _)
 		-- Setup cmp with default lsp completion comparator
 		setup_cmp({})
-		require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-			sources = {
-				{ name = "dap" },
-			},
-		})
 
 		-- Setting different keymaps for different cmp sorting
 		-- This is very useful, when you explore an unknown object and
