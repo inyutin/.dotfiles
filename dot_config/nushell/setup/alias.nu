@@ -59,3 +59,6 @@ def git-clean [] {
 }
 
 ###
+
+alias ghce = gh-copilot explain
+alias ghcs = gh-copilot suggest You need to suggest a command for nushell. Command:
