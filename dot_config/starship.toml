@@ -1,12 +1,27 @@
 add_newline = false
 
+[battery]
+disabled = true
+
 [directory]
 truncate_to_repo = false
-read_only = ' 🔒'
+read_only = " 󰌾"
 truncation_symbol = '../'
 
 [git_metrics]
 disabled = false
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[package]
+disabled = true
+
+[python]
+symbol = " "
 
 [os]
 format = "[($name )]($style)[$symbol]($style)"
@@ -14,5 +29,48 @@ style = "bold blue"
 disabled = false
 
 [os.symbols]
-Linux = " "
-EndeavourOS = " "
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
