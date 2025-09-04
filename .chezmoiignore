@@ -1,4 +1,4 @@
-**/.claude
+.config/**/.claude
 
 */nushell/nvim/plugin/
 */nushell/nvim/lua/dot_luarc.json
