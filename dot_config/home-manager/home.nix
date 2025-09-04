@@ -14,6 +14,8 @@
     pkgs.alejandra # The Uncompromising Nix Code Formatter
     pkgs.awscli2 # Unified tool to manage your AWS services
     pkgs.carapace # Provides argument completion for multiple CLI commands
+    pkgs.direnv # Shell extension that manages your environment
+    pkgs.lazygit # A simple, fast and powerful Git UI
     pkgs.nixd # Nix Language Server
     pkgs.pyenv # Simple Python version management
     pkgs.zoxide # A smarter cd command

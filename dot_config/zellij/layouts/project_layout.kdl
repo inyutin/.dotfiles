@@ -16,4 +16,9 @@ layout {
 		tab name="term" {
 			pane {}
 		}
+		tab name="claude" {
+			pane {
+        command "claude"
+      }
+		}
 }
