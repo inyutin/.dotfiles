@@ -56,10 +56,6 @@ $env.config = {
     partial: true 
     algorithm: "fuzzy"
   }
-  filesize: {
-    metric: true
-    format: "auto"
-  }
   cursor_shape: {
     vi_insert: block
     vi_normal: underscore
@@ -310,9 +306,10 @@ $env.config = {
 
 source ~/.config/nushell/setup/alias.nu
 source ~/.config/nushell/setup/alias_local.nu
-source ~/.config/nushell/setup/completions.nu
 source ~/.config/nushell/setup/env_local.nu
 source ~/.config/nushell/setup/direnv.nu
 source ~/.config/nushell/setup/pyenv.nu
 source ~/.config/nushell/setup/starship.nu
 source ~/.config/nushell/setup/zoxide.nu
+
+source ~/.config/nushell/setup/completions.nu

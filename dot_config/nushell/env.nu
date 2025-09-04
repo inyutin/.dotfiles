@@ -83,7 +83,7 @@ if ("/home/dmitry/.nix-profile/etc/profile.d/nix.sh" | path expand | path exists
   bash -c $"source /home/dmitry/.nix-profile/etc/profile.d/nix.sh && env"
     | lines
     | parse "{n}={v}"
-    | filter { |x| ($x.n not-in $env) or $x.v != ($env | get $x.n) }
+    | where { |x| ($x.n not-in $env) or $x.v != ($env | get $x.n) }
     | where n not-in ["_", "LAST_EXIT_CODE", "DIRS_POSITION"]
     | transpose --header-row
     | into record

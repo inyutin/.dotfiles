@@ -22,8 +22,21 @@ if (not ($env | default false __zoxide_hooked | get __zoxide_hooked)) {
 # When using zoxide with --no-cmd, alias these internal functions as desired.
 #
 
+def complete_zoxide [context: string] {
+	let parts: list<string> = $context | split row " " | skip 1
+	{
+		"options": {
+			"sort": false
+			"completion_algorithm": "prefix"
+			"positional": false
+			"case_sensitive": false
+		}
+		"completions": (^zoxide query --list --exclude $env.PWD -- ...$parts | lines)
+	}
+}
+
 # Jump to a directory using only keywords.
-def --env __zoxide_z [...rest:string] {
+def --env __zoxide_z [...rest:string@'complete_zoxide'] {
   let arg0 = ($rest | append '~').0
   let path = if (($rest | length) <= 1) and ($arg0 == '-' or ($arg0 | path expand | path type) == dir) {
     $arg0
@@ -34,7 +47,7 @@ def --env __zoxide_z [...rest:string] {
 }
 
 # Jump to a directory using interactive search.
-def --env __zoxide_zi [...rest:string] {
+def --env __zoxide_zi [...rest:string@'complete_zoxide'] {
   cd $'(zoxide query --interactive -- ...$rest | str trim -r -c "\n")'
 }
 
