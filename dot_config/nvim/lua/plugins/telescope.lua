@@ -18,11 +18,20 @@ local telescope_plugin = {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 
+		local open_after_tree = function(prompt_bufnr)
+			-- https://github.com/nvim-treesitter/nvim-treesitter/issues/7952#issuecomment-2996499844
+			-- TODO: find a better solution
+			vim.defer_fn(function()
+				actions.select_default(prompt_bufnr)
+			end, 500) -- Delay allows filetype and plugins to settle before opening
+		end
+
 		telescope.setup({
 			defaults = {
 				mappings = {
 					n = {
 						["<C-d>"] = actions.delete_buffer,
+						["<CR>"] = open_after_tree,
 					},
 					i = {
 						["<C-d>"] = actions.delete_buffer,

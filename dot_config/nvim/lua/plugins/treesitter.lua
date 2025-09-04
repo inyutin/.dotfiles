@@ -16,7 +16,6 @@ local ensure_installed = {
 local treesitter_plugin = {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
-		"nushell/tree-sitter-nu",
 		"tree-sitter-grammars/tree-sitter-hyprlang",
 	},
 	build = ":TSUpdate",
