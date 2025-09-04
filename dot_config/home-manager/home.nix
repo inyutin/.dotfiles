@@ -11,19 +11,15 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.awscli2
-    pkgs.alejandra # Nix Language Server
-    pkgs.aws-sso-cli
+    pkgs.alejandra # The Uncompromising Nix Code Formatter
+    pkgs.awscli2 # Unified tool to manage your AWS services
     pkgs.carapace # Provides argument completion for multiple CLI commands
-    pkgs.gh # GitHub CLI
-    pkgs.gh-copilot # GitHub Copilot CLI
     pkgs.nixd # Nix Language Server
     pkgs.pyenv # Simple Python version management
     pkgs.zoxide # A smarter cd command
   ];
 
   home.file = {};
-
   home.sessionVariables = {};
 
   # Let Home Manager install and manage itself.
